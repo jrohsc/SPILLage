@@ -1,6 +1,6 @@
 # SPILLage: Agentic Oversharing on the Web
 
-This repository contains code and datasets for evaluating how web browsing agents handle sensitive and task-irrelevant personal information when completing tasks. The idea is simple: we give agents personas with personal details mixed into task descriptions, then see what information they share while browsing websites.
+This repository contains code and datasets for evaluating how web browsing agents overshare sensitive and task-irrelevant personal information when completing tasks. We give agents personas with personal details mixed into task descriptions, then see what information they share while browsing websites.
 
 The dataset includes task files with personas that contain both relevant and irrelevant personal attributes. When agents interact with websites (like Amazon, WebMD, or Zillow), we capture their logs to analyze what gets shared and what doesn't.
 
