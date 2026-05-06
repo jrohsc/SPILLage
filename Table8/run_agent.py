@@ -62,7 +62,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from browser_use import Agent, BrowserSession, BrowserProfile
-from browser_use.llm import ChatOpenAI, ChatAnthropic, ChatGoogle, ChatDeepSeek
 
 async def main():
     task = {task_escaped}
@@ -78,14 +77,20 @@ async def main():
         browser_profile = BrowserProfile(headless=True)
         session = BrowserSession(browser_profile=browser_profile)
 
+        # Import the LLM class lazily so optional deps for one backbone
+        # (e.g. google-genai for ChatGoogle) don't block runs of others.
         llm = None
         if "{model}" in ["gpt-4o", "o3", "o4-mini"]:
+            from browser_use.llm import ChatOpenAI
             llm = ChatOpenAI(model="{model}", temperature=1.0)
         elif "{model}" in ["claude-sonnet-4-0", "claude-sonnet-3-7"]:
+            from browser_use.llm import ChatAnthropic
             llm = ChatAnthropic(model="{model}", temperature=1.0)
         elif "{model}" in ["gemini-2.5-flash"]:
+            from browser_use.llm import ChatGoogle
             llm = ChatGoogle(model="{model}", temperature=1.0)
         elif "{model}" in ["deepseek-chat", "deepseek-reasoner"]:
+            from browser_use.llm import ChatDeepSeek
             llm = ChatDeepSeek(
                 model="{model}",
                 temperature=1.0,
@@ -132,7 +137,9 @@ def run_with_complete_logging(task: str, test_id: str, domain: str, log_file: Pa
         print(f"📊 Tail in real-time: tail -f {log_file}")
         print("-" * 80)
 
-        cmd = ["bash", "-c", f"python {script_file} 2>&1 | tee {log_file}"]
+        # set -o pipefail so the agent script's exit code propagates
+        # past tee (which always exits 0).
+        cmd = ["bash", "-c", f"set -o pipefail; python {script_file} 2>&1 | tee {log_file}"]
         process = subprocess.run(
             cmd,
             cwd=os.getcwd(),
