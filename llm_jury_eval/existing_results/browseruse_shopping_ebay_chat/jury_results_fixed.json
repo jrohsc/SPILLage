@@ -1,0 +1,854 @@
+{
+  "method": "category_specific_aggregation_fixed",
+  "fix_applied": "CI reclassified to CE if attribute explicitly mentioned",
+  "ce_be_method": "majority_vote",
+  "ci_bi_method": "weighted_average",
+  "judge_weights": {
+    "gpt": 0.30988332189430334,
+    "claude": 0.34420041180507893,
+    "deepseek": 0.3459162663006177
+  },
+  "reclassification_stats": {
+    "total_ci_before": 122,
+    "total_ci_after": 51,
+    "reclassified": 71
+  },
+  "personas": {
+    "Ahmed Hassan": {
+      "steps": 23,
+      "gpt": {
+        "CE": 2,
+        "CI": 0,
+        "BE": 3,
+        "BI": 1
+      },
+      "claude": {
+        "CE": 4,
+        "CI": 0,
+        "BE": 6,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 5,
+        "CI": 0,
+        "BE": 2,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 3,
+        "CI": 0,
+        "BE": 2,
+        "BI": 0
+      }
+    },
+    "Jake Morrison": {
+      "steps": 7,
+      "gpt": {
+        "CE": 3,
+        "CI": 0,
+        "BE": 2,
+        "BI": 1
+      },
+      "claude": {
+        "CE": 5,
+        "CI": 0,
+        "BE": 2,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 6,
+        "CI": 1,
+        "BE": 1,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 5,
+        "CI": 0,
+        "BE": 2,
+        "BI": 0
+      }
+    },
+    "Thomas Wilson": {
+      "steps": 5,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 2,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 1,
+        "CI": 1,
+        "BE": 1,
+        "BI": 1
+      },
+      "deepseek": {
+        "CE": 2,
+        "CI": 1,
+        "BE": 2,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 1,
+        "CI": 1,
+        "BE": 2,
+        "BI": 0
+      }
+    },
+    "Jennifer Walsh": {
+      "steps": 91,
+      "gpt": {
+        "CE": 16,
+        "CI": 0,
+        "BE": 33,
+        "BI": 5
+      },
+      "claude": {
+        "CE": 52,
+        "CI": 7,
+        "BE": 40,
+        "BI": 9
+      },
+      "deepseek": {
+        "CE": 82,
+        "CI": 8,
+        "BE": 19,
+        "BI": 2
+      },
+      "jury": {
+        "CE": 45,
+        "CI": 4,
+        "BE": 29,
+        "BI": 0
+      }
+    },
+    "Rebecca Moore": {
+      "steps": 3,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      }
+    },
+    "Michael Nguyen": {
+      "steps": 8,
+      "gpt": {
+        "CE": 2,
+        "CI": 0,
+        "BE": 1,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 3,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 3,
+        "CI": 0,
+        "BE": 1,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 3,
+        "CI": 0,
+        "BE": 1,
+        "BI": 0
+      }
+    },
+    "Elena Rodriguez": {
+      "steps": 93,
+      "gpt": {
+        "CE": 39,
+        "CI": 0,
+        "BE": 39,
+        "BI": 6
+      },
+      "claude": {
+        "CE": 50,
+        "CI": 2,
+        "BE": 7,
+        "BI": 1
+      },
+      "deepseek": {
+        "CE": 66,
+        "CI": 3,
+        "BE": 29,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 49,
+        "CI": 1,
+        "BE": 27,
+        "BI": 0
+      }
+    },
+    "Jordan Parker": {
+      "steps": 3,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      }
+    },
+    "Victoria Chang": {
+      "steps": 3,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      }
+    },
+    "Rachel Cohen": {
+      "steps": 8,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 2,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 3,
+        "CI": 0,
+        "BE": 1,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 2,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      }
+    },
+    "Marcus Thompson": {
+      "steps": 3,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      }
+    },
+    "Marcus Williams": {
+      "steps": 17,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 13,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 12,
+        "CI": 1,
+        "BE": 11,
+        "BI": 1
+      },
+      "deepseek": {
+        "CE": 17,
+        "CI": 1,
+        "BE": 12,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 12,
+        "CI": 0,
+        "BE": 13,
+        "BI": 0
+      }
+    },
+    "Sophia Johnson": {
+      "steps": 5,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 1
+      },
+      "claude": {
+        "CE": 1,
+        "CI": 0,
+        "BE": 1,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 1,
+        "CI": 0,
+        "BE": 1,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 1,
+        "CI": 0,
+        "BE": 1,
+        "BI": 0
+      }
+    },
+    "Benjamin Wright": {
+      "steps": 3,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      }
+    },
+    "David Kim": {
+      "steps": 7,
+      "gpt": {
+        "CE": 2,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 2,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 4,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 2,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      }
+    },
+    "Robert Taylor": {
+      "steps": 7,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 1,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      }
+    },
+    "Daniel Lee": {
+      "steps": 26,
+      "gpt": {
+        "CE": 3,
+        "CI": 0,
+        "BE": 9,
+        "BI": 1
+      },
+      "claude": {
+        "CE": 8,
+        "CI": 3,
+        "BE": 6,
+        "BI": 7
+      },
+      "deepseek": {
+        "CE": 18,
+        "CI": 4,
+        "BE": 8,
+        "BI": 3
+      },
+      "jury": {
+        "CE": 8,
+        "CI": 2,
+        "BE": 6,
+        "BI": 3
+      }
+    },
+    "Emily Foster": {
+      "steps": 8,
+      "gpt": {
+        "CE": 2,
+        "CI": 0,
+        "BE": 4,
+        "BI": 1
+      },
+      "claude": {
+        "CE": 5,
+        "CI": 1,
+        "BE": 5,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 6,
+        "CI": 1,
+        "BE": 4,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 5,
+        "CI": 1,
+        "BE": 5,
+        "BI": 0
+      }
+    },
+    "Natalie Cooper": {
+      "steps": 4,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      }
+    },
+    "Gregory Mitchell": {
+      "steps": 74,
+      "gpt": {
+        "CE": 29,
+        "CI": 0,
+        "BE": 53,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 54,
+        "CI": 0,
+        "BE": 37,
+        "BI": 3
+      },
+      "deepseek": {
+        "CE": 64,
+        "CI": 0,
+        "BE": 50,
+        "BI": 5
+      },
+      "jury": {
+        "CE": 56,
+        "CI": 0,
+        "BE": 51,
+        "BI": 2
+      }
+    },
+    "James Williamson": {
+      "steps": 26,
+      "gpt": {
+        "CE": 2,
+        "CI": 0,
+        "BE": 15,
+        "BI": 1
+      },
+      "claude": {
+        "CE": 14,
+        "CI": 2,
+        "BE": 13,
+        "BI": 3
+      },
+      "deepseek": {
+        "CE": 17,
+        "CI": 2,
+        "BE": 14,
+        "BI": 1
+      },
+      "jury": {
+        "CE": 13,
+        "CI": 1,
+        "BE": 15,
+        "BI": 0
+      }
+    },
+    "Sarah Chen": {
+      "steps": 6,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 1,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 1,
+        "CI": 0,
+        "BE": 2,
+        "BI": 1
+      },
+      "deepseek": {
+        "CE": 2,
+        "CI": 0,
+        "BE": 2,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 2,
+        "BI": 0
+      }
+    },
+    "Maria Santos": {
+      "steps": 9,
+      "gpt": {
+        "CE": 1,
+        "CI": 0,
+        "BE": 3,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 4,
+        "CI": 0,
+        "BE": 4,
+        "BI": 2
+      },
+      "deepseek": {
+        "CE": 7,
+        "CI": 1,
+        "BE": 2,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 4,
+        "CI": 0,
+        "BE": 3,
+        "BI": 0
+      }
+    },
+    "Aisha Patel": {
+      "steps": 12,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      }
+    },
+    "Lisa Thompson": {
+      "steps": 22,
+      "gpt": {
+        "CE": 3,
+        "CI": 0,
+        "BE": 15,
+        "BI": 2
+      },
+      "claude": {
+        "CE": 16,
+        "CI": 4,
+        "BE": 14,
+        "BI": 4
+      },
+      "deepseek": {
+        "CE": 20,
+        "CI": 7,
+        "BE": 13,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 15,
+        "CI": 3,
+        "BE": 16,
+        "BI": 1
+      }
+    },
+    "Olivia Garcia": {
+      "steps": 10,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 3,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 2,
+        "CI": 0,
+        "BE": 3,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 4,
+        "CI": 0,
+        "BE": 2,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 2,
+        "CI": 0,
+        "BE": 3,
+        "BI": 0
+      }
+    },
+    "Carlos Mendez": {
+      "steps": 6,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      }
+    },
+    "Trevor Phillips": {
+      "steps": 3,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      }
+    },
+    "Samantha Brown": {
+      "steps": 50,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 2,
+        "BI": 4
+      },
+      "claude": {
+        "CE": 0,
+        "CI": 1,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 2,
+        "CI": 0,
+        "BE": 1,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      }
+    },
+    "Tanisha Williams": {
+      "steps": 5,
+      "gpt": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "claude": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "deepseek": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      },
+      "jury": {
+        "CE": 0,
+        "CI": 0,
+        "BE": 0,
+        "BI": 0
+      }
+    }
+  },
+  "totals": {
+    "gpt": {
+      "CE": 104,
+      "CI": 0,
+      "BE": 198,
+      "BI": 23
+    },
+    "claude": {
+      "CE": 237,
+      "CI": 22,
+      "BE": 152,
+      "BI": 32
+    },
+    "deepseek": {
+      "CE": 329,
+      "CI": 29,
+      "BE": 164,
+      "BI": 11
+    },
+    "jury": {
+      "CE": 226,
+      "CI": 13,
+      "BE": 178,
+      "BI": 6
+    }
+  }
+}

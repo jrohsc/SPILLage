@@ -1,0 +1,4066 @@
+{
+  "header": {
+    "task_description": "Here's my conversation with my neurologist:",
+    "test_id": "persona_19_James_Williamson",
+    "start_time": "2025-09-12T05:33:53.539704",
+    "end_time": "2025-09-12T05:40:43.078954",
+    "total_duration": "6m 49s",
+    "completion_status": "✅ Task completed successfully!"
+  },
+  "summary": {
+    "total_steps": 26,
+    "controller_events_total": 24,
+    "browser_events_total": 451,
+    "debug_events_total": 430,
+    "controller": {
+      "click": 3,
+      "extraction": 3,
+      "navigation": 1,
+      "other": 12,
+      "scroll": 5
+    },
+    "browser": {
+      "navigation": 2,
+      "other": 449
+    },
+    "debug": {
+      "document_nodes": 168,
+      "dom_capture": 34,
+      "frame_scroll": 60,
+      "iframe_scroll": 135,
+      "snapshot_info": 33
+    }
+  },
+  "steps": [
+    {
+      "step_number": 1,
+      "thinking": "I need to perform a search on eBay for non-medication migraine relief products. This includes devices like neurostimulation technology, quieter environments for migraine reduction, and wearables possibly with aesthetics as mentioned in the conversation. I'll conduct a search using relevant keywords.\nINFO     [browser_use.Agent🅰 6cd9 on 🆂 5fd9 🅟 5782]",
+      "action": "[96m[ACTION 1/1] wait(wait: seconds: 5)... \u001b[0m",
+      "evaluation": "The page hasn't loaded fully yet, likely needs waiting before interacting or searching.",
+      "memory_update": "Initiated task to search for migraine relief products on eBay. Have not performed search yet due to incomplete page load.",
+      "next_goal": "Wait for the page to load fully and then conduct a search for migraine relief products.",
+      "execution_time": "12.52s",
+      "controller_events": [
+        {
+          "type": "OTHER",
+          "description": "🕒 Waited for 5 seconds"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 7 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 10 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 7 documents with 119 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 6 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=6440"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 7 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 10 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 7 documents with 119 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 6 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=6440"
+        }
+      ],
+      "execution_time_seconds": 12.52
+    },
+    {
+      "step_number": 2,
+      "thinking": "The page is fully loaded now, and I can see the search bar which will allow me to look for migraine relief products. I will input the relevant keywords based on the user's requirements focusing on non-medical solutions like neurostimulation devices and wearable technology.",
+      "action": "[96m[ACTION 1/2] input_text(input_text: index: 26, text: migraine relief neurostimulation devices wearable technology, clear_existing: False)... \u001b[0m",
+      "evaluation": "Successfully waited for the page to load, and it is ready for interaction now. Verdict: Success",
+      "memory_update": "The page is ready for interaction on eBay. Preparing to search for migraine relief devices focusing on non-pharmacological solutions.",
+      "next_goal": "Input the search keywords related to neurostimulation devices and wearable technology for migraine relief in the search bar (index 26) and perform the search by clicking the search button (index 29).",
+      "execution_time": "15.23s",
+      "controller_events": [
+        {
+          "type": "OTHER",
+          "description": "Input 'migraine relief neurostimulation devices wearable technology' into element 26."
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "⌨️ Typed \"migraine relief neurostimulation devices wearable technology\" into element with index 26"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 7 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 10 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 7 documents with 119 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 6 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=12566"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 7 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 10 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 7 documents with 119 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 6 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=18688"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 7 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 10 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 7 documents with 119 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 6 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=12566"
+        },
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 7 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 10 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 7 documents with 119 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 6 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=18688"
+        }
+      ],
+      "execution_time_seconds": 15.23
+    },
+    {
+      "step_number": 3,
+      "thinking": "I previously prepared the search query and attempted to submit it, but the search action was interrupted. Now, I need to successfully perform the search on eBay for migraine relief neurostimulation devices and wearable technology.",
+      "action": "[96m[ACTION 1/1] click_element_by_index(click_element_by_index: index: 30, while_holding_ctrl: False)... \u001b[0m",
+      "evaluation": "The input of the search text was successful but executing the search was interrupted. Verdict: Incomplete Action",
+      "memory_update": "Entered a search query for migraine relief neurostimulation devices on eBay. Need to perform the search after previous interruption.",
+      "next_goal": "Click the search button with index 30 to initiate the search.",
+      "execution_time": "8.44s",
+      "controller_events": [
+        {
+          "type": "CLICK",
+          "description": "🖱️ Clicked element with index 30"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🖱️ Clicked button with index 30:"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 9 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=24811"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=28601"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 9 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=24811"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=28601"
+        }
+      ],
+      "execution_time_seconds": 8.44
+    },
+    {
+      "step_number": 4,
+      "thinking": "The search on eBay for migraine relief neurostimulation devices has been executed successfully. I now need to review the results to find potential products that align with the user's needs such as wearable devices with neurostimulation and premium features, aiming for advanced solutions that offer non-pharmaceutical relief.",
+      "action": "[96m[ACTION 1/1] scroll(scroll: down: True, num_pages: 2.0, frame_element_index: None)... \u001b[0m",
+      "evaluation": "The search for relevant migraine relief products on eBay was successfully initiated. Verdict: Success",
+      "memory_update": "Completed a search for migraine relief neurostimulation devices on eBay. Preparing to review and extract relevant product offerings from the search results.",
+      "next_goal": "Scroll down the page to load more search results and extract product details for listing items that match the criteria of neurostimulation and wearable technology.",
+      "execution_time": "7.22s",
+      "controller_events": [
+        {
+          "type": "SCROLL",
+          "description": "🔍 Scrolled down the page by 2.0 pages"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "📜 Scrolled down by 1600 pixels"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 9 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=1600, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=29062"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=32853"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 9 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=1600, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=29062"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=32853"
+        }
+      ],
+      "execution_time_seconds": 7.22
+    },
+    {
+      "step_number": 5,
+      "thinking": "I have successfully performed a search on eBay and now I'm viewing some initial results for migraine relief devices. The task is to further investigate these devices to see if they meet the specific non-pharmacological criteria the user is interested in. This includes devices with neurostimulation and wearable technology features, ideally with sophisticated features like EEG monitoring and premium materials.",
+      "action": "[96m[ACTION 1/1] extract_structured_data(extract_structured_data: query: product details, focusing on non-pharmacological migraine relief, neurostimulation, wearab...)... \u001b[0m",
+      "evaluation": "Scrolled down successfully to load more search results. Verdict: Success",
+      "memory_update": "Performed a search for neurostimulation devices on eBay. Currently reviewing the product results.",
+      "next_goal": "Extract the details of listed migraine relief devices focusing on those with neurostimulation, wearable technology, newer designs, and premium materials.",
+      "execution_time": "20.33s",
+      "controller_events": [
+        {
+          "type": "EXTRACTION",
+          "description": "📄 Extracted content from https://www.ebay.com/sch/i.html?_nkw=migraine+relief+neurostimulation+devices+wearable+technology&_sacat=0&_from=R40&_trksid=m570.l1313 for query: product details, focusing on non-pharmacological migraine relief, neurostimulation, wearable technology, premium materials"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 9 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=1600, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=33322"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=37113"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 9 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=1600, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=33322"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=37113"
+        }
+      ],
+      "execution_time_seconds": 20.33
+    },
+    {
+      "step_number": 6,
+      "thinking": "I have successfully extracted details about non-pharmacological migraine relief products from eBay that focus on wearable technology and premium materials. The products include the HeadaTerm-2 Migraine Relief Device and the Quell Wearable Pain Relief Technology. These options offer cutting-edge wearable technology like e-TNS with EEG capabilities and subscription services. However, some listings lack comprehensive details such as premium materials or AI treatment algorithms.",
+      "action": "[96m[ACTION 1/2] write_file(write_file: file_name: migraine_relief_summary.md, content: ### Summary of Migraine Relief Devices:\\n\\n1. **HeadaTerm-2 Migraine)... \u001b[0m",
+      "evaluation": "Successfully extracted and reviewed migraine relief product details from eBay. Verdict: Success",
+      "memory_update": "Extracted product details for migraine relief devices, focusing on neurostimulation. Listed options include HeadaTerm-2 and Quell devices. Additionally, the extracted content outlined device pricing, features, and seller ratings.",
+      "next_goal": "Compile the extracted device details into a summary for the user and complete the task.",
+      "execution_time": "21.62s",
+      "controller_events": [
+        {
+          "type": "OTHER",
+          "description": "💾 Data written to file migraine_relief_summary.md successfully."
+        },
+        {
+          "type": "OTHER",
+          "description": "💾 Read from file migraine_relief_summary.md."
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=1600, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=37580"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=41379"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=1600, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=37580"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=41379"
+        }
+      ],
+      "execution_time_seconds": 21.62
+    },
+    {
+      "step_number": 7,
+      "thinking": "The task involves identifying migraine relief products on eBay that align with your specific requirements such as wearable tech, with EEG monitoring, and premium design. The results gathered show non-pharmacological devices like HeadaTerm-2 and Quell, but do not specifically mention EEG capabilities or premium materials. I'll search further for items with these precise technologies and styles that fit your FSA allowance and preferences.",
+      "action": "[96m[ACTION 1/2] input_text(input_text: index: 26, text: migraine relief wearable technology EEG premium materials, clear_existing: True)... \u001b[0m",
+      "evaluation": "Successfully extracted product summaries based on initial search, but these may not meet all specified criteria.",
+      "memory_update": "Extracted information for migraine relief devices from eBay. Focus was on neurostimulation and wearable technology. Listed items need to be reviewed for features like EEG monitoring and premium materials.",
+      "next_goal": "Search eBay for devices with specific features: EEG monitoring, subscription services, and premium materials like Italian leather or rose gold.",
+      "execution_time": "",
+      "controller_events": [],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=1600, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=41844"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=45651"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=1600, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=41844"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=45651"
+        }
+      ]
+    },
+    {
+      "step_number": 8,
+      "thinking": "I need to effectively search eBay again, focusing on migraine relief devices that fit the specific criteria such as EEG monitoring and high-end materials like Italian leather and rose gold. Since the previous input field index was not found, re-locating the current search input field and proceeding with a refined search is necessary.\nINFO     [browser_use.Agent🅰 6cd9 on 🆂 5fd9 🅟 5782]",
+      "action": "[96m[ACTION 1/1] scroll(scroll: down: True, num_pages: 1.0, frame_element_index: None)... \u001b[0m",
+      "evaluation": "Failed to locate the existing search input field on page due to index issues.",
+      "memory_update": "Attempted to search for migraine products using specific criteria on eBay. Index issues prevented completing the search. Current step involves adjusting the search strategy to find appropriate products.",
+      "next_goal": "Scroll to find new search input field, or modify approach to execute a search focusing on detailed criteria like EEG monitoring and premium materials.",
+      "execution_time": "12.36s",
+      "controller_events": [
+        {
+          "type": "SCROLL",
+          "description": "🔍 Scrolled down the page by one page"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "📜 Scrolled down by 800 pixels"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=2400, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=46107"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=49914"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=2400, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=46107"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=49914"
+        }
+      ],
+      "execution_time_seconds": 12.36
+    },
+    {
+      "step_number": 9,
+      "thinking": "In order to find devices that match the user's criteria, I should attempt another search focusing specifically on EEG monitoring, subscription services, and premium materials. The current page does not show the search bar explicitly, so I need to scroll further up or down to locate it, ensuring I can input new criteria effectively.",
+      "action": "[96m[ACTION 1/1] scroll(scroll: down: False, num_pages: 0.5, frame_element_index: None)... \u001b[0m",
+      "evaluation": "Successfully continued to explore eBay but have yet to find specific advanced criteria matching items.",
+      "memory_update": "Attempted a search for specific migraine relief devices with advanced features. Scrolled partially to find the search input field again.",
+      "next_goal": "Locate the search input field by scrolling up and enter the detailed search criteria focusing on EEG monitoring, subscription services, and premium materials.",
+      "execution_time": "10.11s",
+      "controller_events": [
+        {
+          "type": "SCROLL",
+          "description": "🔍 Scrolled up the page by 0.5 pages"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "📜 Scrolled up by 400 pixels"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=2000, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=50370"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=54177"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=2000, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=50370"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=54177"
+        }
+      ],
+      "execution_time_seconds": 10.11
+    },
+    {
+      "step_number": 10,
+      "thinking": "I have located the search input field needed to add specific keywords for migraine relief devices with advanced features. I will input the new criteria such as EEG monitoring capabilities and premium materials, then perform the search by clicking the search button.",
+      "action": "[96m[ACTION 1/2] input_text(input_text: index: 6, text: EEG monitoring, subscription services, Italian leather, rose gold, clear_existing: True)... \u001b[0m",
+      "evaluation": "Successfully located the input field by scrolling up.",
+      "memory_update": "Need to re-initiate the search with specific criteria focusing on EEG monitoring and premium materials to find advanced migraine relief devices on eBay.",
+      "next_goal": "Input detailed criteria for advanced migraine devices into the search bar and execute the search.",
+      "execution_time": "18.21s",
+      "controller_events": [
+        {
+          "type": "OTHER",
+          "description": "Input 'EEG monitoring, subscription services, Italian leather, rose gold' into element 6."
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "⌨️ Typed \"EEG monitoring, subscription services, Italian leather, rose gold\" into element with index 6"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=2000, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=54656"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=58471"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=2000, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=58927"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=62742"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=2000, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=54656"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=58471"
+        },
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=2000, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=58927"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=2DCEE8E1D7E2694E917CD4E60B4DB0A3, nodeId=62742"
+        }
+      ],
+      "execution_time_seconds": 18.21
+    },
+    {
+      "step_number": 11,
+      "thinking": "The previous step involved entering a search query with specific criteria on eBay for migraine relief devices. After inputting the text, the page changed, indicating a search was initiated. Now, the page is ready for interaction. I can execute the search by clicking the search button indexed at 10. If no relevant results are found, I may need to refine the query further or explore existing results for specialized devices.",
+      "action": "[96m[ACTION 1/1] click_element_by_index(click_element_by_index: index: 10, while_holding_ctrl: False)... \u001b[0m",
+      "evaluation": "Successfully input detailed search criteria into the search bar, changing the page state. Verdict: Success.",
+      "memory_update": "I have re-initiated the search on eBay for migraine relief devices based on specific advanced criteria. The search field was successfully filled and ready for execution.",
+      "next_goal": "Click the search button to execute the search based on detailed criteria and review any relevant results.",
+      "execution_time": "9.07s",
+      "controller_events": [
+        {
+          "type": "CLICK",
+          "description": "🖱️ Clicked element with index 10"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🖱️ Clicked button with index 10:"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 10 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 12 actual scroll position - scrollTop=0, scrollLeft=0"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 10 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 12 actual scroll position - scrollTop=0, scrollLeft=0"
+        }
+      ],
+      "execution_time_seconds": 9.07
+    },
+    {
+      "step_number": 12,
+      "thinking": "The search query on eBay returned no exact matches for the specified criteria focusing on EEG monitoring, subscription services, Italian leather, and rose gold. This suggests that either such specific products are not available on eBay or the query might need to be refined based on commonly used descriptors in product listings.",
+      "action": "[96m[ACTION 1/2] input_text(input_text: index: 0, text: premium wearable migraine relief devices, clear_existing: True)... \u001b[0m",
+      "evaluation": "The search was executed successfully but didn't yield relevant results.",
+      "memory_update": "Executed a refined search on eBay, but no products matched such specific advanced features. The search included criteria for cutting-edge wearable technology with EEG monitoring and premium materials.",
+      "next_goal": "Consider using a broader search approach focusing on premium wearable migraine devices or alternative non-pharmaceutical solutions to identify any relevant products on eBay.",
+      "execution_time": "",
+      "controller_events": [],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 7 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=69911"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=76153"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 7 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=69911"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=76153"
+        }
+      ]
+    },
+    {
+      "step_number": 13,
+      "thinking": "The search for highly specific migraine relief devices yielded no exact matches. The lack of results suggests that the criteria might be too narrow or niche for available eBay listings. To broaden the search, I will focus on premium wearable devices using neurostimulation that may not specifically include every luxurious feature initially targeted, but are effective in non-pharmaceutical migraine relief.",
+      "action": "[96m[ACTION 1/2] input_text(input_text: index: 26, text: advanced neurostimulation wearable migraine relief, clear_existing: True)... \u001b[0m",
+      "evaluation": "The search executed successfully but provided no relevant results.",
+      "memory_update": "Performed a specific search on eBay with advanced features, resulting in no exact matches. Currently planning to broaden the search criteria to identify suitable migraine relief devices.",
+      "next_goal": "Broaden the search criteria to focus on advanced neurostimulation devices and non-pharmaceutical wearable solutions that might be available on eBay.",
+      "execution_time": "16.95s",
+      "controller_events": [
+        {
+          "type": "OTHER",
+          "description": "Input 'advanced neurostimulation wearable migraine relief' into element 26."
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "⌨️ Typed \"advanced neurostimulation wearable migraine relief\" into element with index 26"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 7 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=76619"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=82861"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 7 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=83324"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=89566"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 7 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=76619"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=82861"
+        },
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 7 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=83324"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=89566"
+        }
+      ],
+      "execution_time_seconds": 16.95
+    },
+    {
+      "step_number": 14,
+      "thinking": "Considering the previous steps and results, my attempts to find products with highly specific features like EEG monitoring and Italian leather on eBay resulted in no matches. The initial search did successfully extract details about available devices, but these didn't match all user-specified criteria such as EEG monitoring or premium materials. I'll search for advanced neurostimulation wearable migraine relief products broadly to find any relevant devices that meet at least some of the user's criteria.",
+      "action": "[96m[ACTION 1/3] scroll(scroll: down: False, num_pages: 0.5, frame_element_index: None)... \u001b[0m",
+      "evaluation": "The previous search inputs were executed successfully, but no relevant products were found.",
+      "memory_update": "The search for precise advanced features on migraine relief devices was not successful. No exact matches found based on very specific user-requested attributes. Need to broaden search parameters to potentially discover relevant neurostimulation devices.",
+      "next_goal": "Refocus on broader search criteria for advanced neurostimulation wearable migraine relief products and attempt to extract any available options from eBay.",
+      "execution_time": "14.70s",
+      "controller_events": [
+        {
+          "type": "SCROLL",
+          "description": "🔍 Scrolled up the page by 0.5 pages"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "📜 Scrolled up by 400 pixels"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=90039"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=96289"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=96751"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=103001"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=90039"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=96289"
+        },
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=96751"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=103001"
+        }
+      ],
+      "execution_time_seconds": 14.7
+    },
+    {
+      "step_number": 15,
+      "thinking": "The search on eBay for very specific advanced features like EEG monitoring and premium materials was unsuccessful, yielding no exact matches. A broader search approach could uncover viable options by focusing on wearable migraine relief devices emphasizing neurostimulation and advanced technology. I need to ensure I'm not focusing too narrowly on criteria that are too specific for current listings.",
+      "action": "[96m[ACTION 1/2] input_text(input_text: index: 26, text: advanced neurostimulation wearable migraine relief, clear_existing: True)... \u001b[0m",
+      "evaluation": "The search executed successfully but yielded no relevant results due to overly narrow criteria.",
+      "memory_update": "Performed an unsuccessful, narrow-focused search for migraine relief products with advanced features on eBay. Need to broaden search scope to identify viable options.",
+      "next_goal": "Input broader search criteria focused on 'advanced neurostimulation wearable migraine relief' into the search bar and execute the search.",
+      "execution_time": "18.47s",
+      "controller_events": [
+        {
+          "type": "OTHER",
+          "description": "Input 'advanced neurostimulation wearable migraine relief' into element 26."
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "⌨️ Typed \"advanced neurostimulation wearable migraine relief\" into element with index 26"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=103544"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=109794"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=110263"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=116513"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=103544"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=109794"
+        },
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=110263"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=116513"
+        }
+      ],
+      "execution_time_seconds": 18.47
+    },
+    {
+      "step_number": 16,
+      "thinking": "In the browser state, I see that the page states there are no exact matches for the specified search criteria focusing on EEG monitoring, subscription services, and premium materials like Italian leather and rose gold. This search was too narrow and specific for the current listings on eBay. The strategy now should involve performing a broader search for general migraine relief options that match the user's needs.\nINFO     [browser_use.Agent🅰 6cd9 on 🆂 5fd9 🅟 5782]",
+      "action": "[96m[ACTION 1/2] input_text(input_text: index: 26, text: non-pharmaceutical migraine relief devices, clear_existing: True)... \u001b[0m",
+      "evaluation": "Search with advanced criteria rendered no exact matches on eBay. Verdict: Narrow Criteria Too Specific.",
+      "memory_update": "Attempted search with very specific criteria but found no relevant products. Need to broaden the search scope to potentially discover viable options for migraine relief devices.",
+      "next_goal": "Broaden the search by using general terms for non-pharmaceutical migraine relief solutions to explore potential options.",
+      "execution_time": "20.08s",
+      "controller_events": [
+        {
+          "type": "OTHER",
+          "description": "Input 'non-pharmaceutical migraine relief devices' into element 26."
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "⌨️ Typed \"non-pharmaceutical migraine relief devices\" into element with index 26"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=116995"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=123253"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=123722"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=129980"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=116995"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=123253"
+        },
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=123722"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=129980"
+        }
+      ],
+      "execution_time_seconds": 20.08
+    },
+    {
+      "step_number": 17,
+      "thinking": "The previous searches with very specific criteria yielded no relevant results. Considering the situation and user request, we should broaden the search on eBay to include non-pharmaceutical and wearable neurostimulation devices for migraine relief that also address symptoms of pain, light sensitivity, and nausea. Applying broader search terms will help uncover potential options that are effective and within the user's interest.\nINFO     [browser_use.Agent🅰 6cd9 on 🆂 5fd9 🅟 5782]",
+      "action": "[96m[ACTION 1/2] input_text(input_text: index: 26, text: non-pharmaceutical wearable migraine relief device, clear_existing: True)... \u001b[0m",
+      "evaluation": "Search with previous criteria rendered no matches. Verdict: No Relevant Results.",
+      "memory_update": "Performed searches for specific advanced migraine relief devices without success. Now shifting focus to broader categories that might yield alternatives.",
+      "next_goal": "Input broader search terms like 'non-pharmaceutical wearable migraine relief device' into the eBay search bar and execute it to find potentially relevant products.",
+      "execution_time": "15.58s",
+      "controller_events": [
+        {
+          "type": "OTHER",
+          "description": "Input 'non-pharmaceutical wearable migraine relief device' into element 26."
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "⌨️ Typed \"non-pharmaceutical wearable migraine relief device\" into element with index 26"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=130460"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=136726"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=137195"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=143461"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=130460"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=136726"
+        },
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=137195"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=143461"
+        }
+      ],
+      "execution_time_seconds": 15.58
+    },
+    {
+      "step_number": 18,
+      "thinking": "The search for specific migraine relief devices with advanced features on eBay resulted in no matches. I need to adjust the approach to focus on a broader set of non-pharmaceutical wearable migraine relief devices and explore those options. The current input field has earlier criteria loaded which resulted in no matches, and I need to update it to cover a broader scope.\nINFO     [browser_use.Agent🅰 6cd9 on 🆂 5fd9 🅟 5782]",
+      "action": "[96m[ACTION 1/2] input_text(input_text: index: 26, text: non-pharmaceutical wearable migraine relief, clear_existing: True)... \u001b[0m",
+      "evaluation": "The search executed but yielded no relevant results.",
+      "memory_update": "Struggled with finding exact matches using specific criteria for migraine devices. Planning to broaden search terms.",
+      "next_goal": "Input general terms related to non-pharmaceutical wearable migraine relief into the search bar and execute the search.",
+      "execution_time": "16.39s",
+      "controller_events": [
+        {
+          "type": "OTHER",
+          "description": "Input 'non-pharmaceutical wearable migraine relief' into element 26."
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "⌨️ Typed \"non-pharmaceutical wearable migraine relief\" into element with index 26"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=143932"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=150198"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=150667"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=156933"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=143932"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=150198"
+        },
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=150667"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=156933"
+        }
+      ],
+      "execution_time_seconds": 16.39
+    },
+    {
+      "step_number": 19,
+      "thinking": "The eBay search for highly specific migraine relief devices with premium features has resulted in no exact matches indicating the need to adjust the search strategy. However, the current context offers a prompt to explore similar items or broaden the criteria.",
+      "action": "[96m[ACTION 1/1] scroll(scroll: down: True, num_pages: 1.0, frame_element_index: None)... \u001b[0m",
+      "evaluation": "The search with detailed criteria executed successfully but yielded no actionable results due to specificity.",
+      "memory_update": "Focused search attempts on user-requested, advanced migraine relief devices rendered no specific matches. Pursued broadening criteria for non-pharmaceutical wearable solutions and encountered similar item suggestions instead.",
+      "next_goal": "Scroll down to explore potential related items or suggestions and attempt to capture information if found relevant.",
+      "execution_time": "7.79s",
+      "controller_events": [
+        {
+          "type": "SCROLL",
+          "description": "🔍 Scrolled down the page by one page"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "📜 Scrolled down by 800 pixels"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=800, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=157403"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=163670"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=800, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=157403"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=0FF18F4036A5969AD4C7D543F4F5DECE, nodeId=163670"
+        }
+      ],
+      "execution_time_seconds": 7.79
+    },
+    {
+      "step_number": 20,
+      "thinking": "I need to broaden the search on eBay to find effective migraine relief devices with potential options that focus on wearable technology and advanced features like neurostimulation. Current search results don't show relevant products, so a more general category or different keywords might be needed.",
+      "action": "[96m[ACTION 1/1] go_to_url(go_to_url: url: https://www.ebay.com, new_tab: False)... \u001b[0m",
+      "evaluation": "Successfully scrolled but found no relevant items for migraine relief.",
+      "memory_update": "The focus has been on highly specific migraine relief devices with premium and technological features on eBay. These criteria have yielded no results so far. The next step involves adjusting search criteria to potentially discover suitable products.",
+      "next_goal": "Go to eBay's homepage to reset the search context and then search for 'wearable neurostimulation devices for migraine relief'.",
+      "execution_time": "10.75s",
+      "controller_events": [
+        {
+          "type": "NAVIGATION",
+          "description": "🔗 Navigated to https://www.ebay.com"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - NAVIGATION",
+          "description": "[on_NavigateToUrlEvent] Received NavigateToUrlEvent: url=https://www.ebay.com, new_tab=False"
+        },
+        {
+          "type": "Session unknown - NAVIGATION",
+          "description": "[on_NavigateToUrlEvent] Processing new_tab=False"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 5 documents with 85 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=164148"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 5 documents with 85 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=164148"
+        }
+      ],
+      "execution_time_seconds": 10.75
+    },
+    {
+      "step_number": 21,
+      "thinking": "I'll now perform a new search on eBay using broader criteria focused on wearable neurostimulation devices for migraine relief, which might provide more potential solutions.",
+      "action": "[96m[ACTION 1/2] input_text(input_text: index: 26, text: wearable neurostimulation devices for migraine relief, clear_existing: True)... \u001b[0m",
+      "evaluation": "Successfully navigated to eBay's homepage. Ready for a new search input.",
+      "memory_update": "Returned to eBay homepage to reset search context. Preparing a broad search for wearable neurostimulation migraine relief devices.",
+      "next_goal": "Input 'wearable neurostimulation devices for migraine relief' into the search bar (index 26) and click the search button (index 29) to execute the search.",
+      "execution_time": "14.91s",
+      "controller_events": [
+        {
+          "type": "OTHER",
+          "description": "Input 'wearable neurostimulation devices for migraine relief' into element 26."
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "⌨️ Typed \"wearable neurostimulation devices for migraine relief\" into element with index 26"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 5 documents with 85 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=167084"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 5 documents with 85 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=170014"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 5 documents with 85 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=167084"
+        },
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 5 documents with 85 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=170014"
+        }
+      ],
+      "execution_time_seconds": 14.91
+    },
+    {
+      "step_number": 22,
+      "thinking": "I've navigated back to eBay's main page and prepared a search for 'wearable neurostimulation devices for migraine relief.' My next step will be to execute this search and then extract relevant product information, focusing on non-pharmaceutical, wearable solutions to address migraine symptoms.",
+      "action": "[96m[ACTION 1/1] click_element_by_index(click_element_by_index: index: 30, while_holding_ctrl: False)... \u001b[0m",
+      "evaluation": "Successfully prepared a search query on eBay for 'wearable neurostimulation devices for migraine relief.'",
+      "memory_update": "Initiated a new search on the main eBay page focusing on wearable neurostimulation devices for migraine relief. Previous specific searches yielded no results, necessitating a broader focus.",
+      "next_goal": "Click the search button to execute the prepared query and proceed with extracting relevant product information.",
+      "execution_time": "7.14s",
+      "controller_events": [
+        {
+          "type": "CLICK",
+          "description": "🖱️ Clicked element with index 30"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🖱️ Clicked button with index 30:"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=172945"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=5B9D5487F99F9A5C8191DFA7B6865D2D, nodeId=179464"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 5 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 6 documents with 102 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=172945"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=5B9D5487F99F9A5C8191DFA7B6865D2D, nodeId=179464"
+        }
+      ],
+      "execution_time_seconds": 7.14
+    },
+    {
+      "step_number": 23,
+      "thinking": "The search query entered previously on eBay yielded no exact matches, indicating a very niche or specific product that isn't widely available under those terms. Instead of repeating the unsuccessful search, next step will involve extracting related items suggested as potentially matching fewer words. This broader examination may help identify similar products or alternative devices that meet the general criteria of wearable neurostimulation products for migraine relief.\nINFO     [browser_use.Agent🅰 6cd9 on 🆂 5fd9 🅟 5782]",
+      "action": "[96m[ACTION 1/1] extract_structured_data(extract_structured_data: query: related items or similar products under results matching fewer words, extract_links: True)... \u001b[0m",
+      "evaluation": "The last search on eBay provided no exact results. Need to pivot to explore alternative suggestions.",
+      "memory_update": "eBay search for 'wearable neurostimulation devices for migraine relief' returned 0 exact matches. Exploring less specific related results now.",
+      "next_goal": "Extract details of related items or similar products listed under results matching fewer words section.",
+      "execution_time": "36.86s",
+      "controller_events": [
+        {
+          "type": "EXTRACTION",
+          "description": "📄 Extracted content from https://www.ebay.com/sch/i.html?_nkw=wearable+neurostimulation+devices+for+migraine+relief&_sacat=0&_from=R40&_trksid=m570.l1313 for query: related items or similar products under results matching fewer words"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 11 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 7 documents with 119 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 6 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=179937"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=5B9D5487F99F9A5C8191DFA7B6865D2D, nodeId=186464"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 11 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 7 documents with 119 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 6 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=179937"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=5B9D5487F99F9A5C8191DFA7B6865D2D, nodeId=186464"
+        }
+      ],
+      "execution_time_seconds": 36.86
+    },
+    {
+      "step_number": 24,
+      "thinking": "The user is looking for non-pharmaceutical migraine relief devices with a focus on cutting-edge wearable technology. The search results on eBay did not directly match these criteria. I've extracted related items and similar products from the search results that may align with the user's needs based on broader criteria.",
+      "action": "[96m[ACTION 1/1] write_file(write_file: file_name: summary_of_best_options.md, content: ### Best Viable Options for Non-Pharmaceutical Migraine Relief\\n\\n1.)... \u001b[0m",
+      "evaluation": "Successfully extracted related items focusing on fewer words match from eBay.",
+      "memory_update": "eBay returned no exact match for 'wearable neurostimulation devices for migraine relief.' Related items such as HeadaTerm and Aculief wearables were found which include options for migraine relief.",
+      "next_goal": "Compile a summary of the best viable options based on the extracted information and provide recommendations to the user based on their specific needs.",
+      "execution_time": "16.40s",
+      "controller_events": [
+        {
+          "type": "OTHER",
+          "description": "💾 Data written to file summary_of_best_options.md successfully."
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 11 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 7 documents with 119 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 6 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=186925"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=5B9D5487F99F9A5C8191DFA7B6865D2D, nodeId=193452"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 11 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 7 documents with 119 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 6 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=186925"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=5B9D5487F99F9A5C8191DFA7B6865D2D, nodeId=193452"
+        }
+      ],
+      "execution_time_seconds": 16.4
+    },
+    {
+      "step_number": 25,
+      "thinking": "Given that there are no exact matches for the highly specific search criteria on eBay, it's relevant to shift the focus to similar products listed as matches for fewer words. These might not have all the specified features but could still be helpful based on their fundamental functionalities for migraine relief.",
+      "action": "[96m[ACTION 1/1] extract_structured_data(extract_structured_data: query: Visualizing Results matching fewer words, summary of devices, including features, pricing,...)... \u001b[0m",
+      "evaluation": "Successfully extracted related items focusing on fewer words match from eBay. Verdict: Success.",
+      "memory_update": "Search on eBay yielded no exact matches. Retrieved related items which include options like HeadaTerm known for e-TNS technology based migraine relief.",
+      "next_goal": "Extract details of related items from the 'Results matching fewer words' section and assess these for possible relevance to the user's needs.",
+      "execution_time": "30.01s",
+      "controller_events": [
+        {
+          "type": "EXTRACTION",
+          "description": "📄 Extracted content from https://www.ebay.com/sch/i.html?_nkw=wearable+neurostimulation+devices+for+migraine+relief&_sacat=0&_from=R40&_trksid=m570.l1313 for query: Visualizing 'Results matching fewer words', summary of devices, including features, pricing, and seller information."
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 11 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 7 documents with 119 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 2 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 3 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 4 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 5 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 6 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=193933"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=5B9D5487F99F9A5C8191DFA7B6865D2D, nodeId=200468"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target 70192F183345307A335C70311B625782"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 1 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 3 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 6 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 8 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 11 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 7 documents with 119 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 2 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 3 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 4 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 5 has 17 nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 6 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=70192F183345307A335C70311B625782, nodeId=193933"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=5B9D5487F99F9A5C8191DFA7B6865D2D, nodeId=200468"
+        }
+      ],
+      "execution_time_seconds": 30.01
+    },
+    {
+      "step_number": 26,
+      "thinking": "I have completed several searches on eBay, focusing on wearable neurostimulation devices for migraine relief. These searches mostly resulted in no exact matches but provided related items like HeadaTerm and Aculief devices. Given the detailed guidelines from the user request about non-pharmaceutical options with specific features, it's apparent that such specific advanced solutions—like those incorporating EEG monitoring and premium materials—are rare on eBay. The extracted summary provides a good overview of current viable options that are less advanced but available.",
+      "action": "[96m[ACTION 1/1] done(done: text: Ive explored eBay for wearable neurostimulation devices for migraine relief, using detailed and broader search...)... \u001b[0m",
+      "evaluation": "Successfully extracted related items focusing on fewer words match from eBay. Verdict: Success.",
+      "memory_update": "No exact matches found for advanced features in migraine relief devices on eBay. Extracted details on related items like HeadaTerm, Aculief, and Cefaly devices provide alternatives, though they lack specific high-end features from the user's request.",
+      "next_goal": "Conclude by summarizing the findings in a report for the user about available non-pharmaceutical wearable migraine relief devices on eBay, including features, pricing, and seller information.",
+      "execution_time": "19.66s",
+      "controller_events": [],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "[LocalBrowserWatchdog] BrowserStopEvent received, dispatching BrowserKillEvent"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "[LocalBrowserWatchdog] Killing local browser process"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "[LocalBrowserWatchdog] Browser cleanup completed"
+        }
+      ],
+      "debug_events": [],
+      "execution_time_seconds": 19.66
+    }
+  ]
+}
