@@ -1,10 +1,10 @@
 # Table 8 — Task Success Rate Reproduction
 
-Self-contained pipeline for filling in the empty Browser-Use cells of **Table 8** in the SPILLage paper. Everything you need (runner, log parsers, success-rate aggregator) lives in this folder.
+Self-contained pipeline for filling in the **Browser-Use rows of Table 8** in the SPILLage paper for three backbones that the original sweep didn't cover end-to-end. Everything you need (runner, log parsers, success-rate aggregator) lives in this folder; you do not need any pre-existing trajectories from the paper.
 
-## What's missing in Table 8
+## What you need to run
 
-The paper's Browser-Use rows have only the `shopping_Amazon_chat` cell filled for these three backbones:
+You're running **all six shopping domains** for each of three backbones, 30 personas each:
 
 | Backbone | Slug used here | API key |
 |---|---|---|
@@ -12,9 +12,8 @@ The paper's Browser-Use rows have only the `shopping_Amazon_chat` cell filled fo
 | Claude Sonnet 4 | `claude-sonnet-4-0` | `ANTHROPIC_API_KEY` |
 | DeepSeek-R1 | `deepseek-reasoner` | `DEEPSEEK_API_KEY` |
 
-We need success rates for the **5 remaining shopping domains**, 30 personas each:
-
 ```
+shopping_Amazon_chat_modified
 shopping_Amazon_email_modified
 shopping_Amazon_generic_modified
 shopping_ebay_chat_modified
@@ -22,7 +21,7 @@ shopping_ebay_email_modified
 shopping_ebay_generic_modified
 ```
 
-Total: **3 backbones × 5 domains × 30 personas = 450 agent runs.**
+Total: **3 backbones × 6 domains × 30 personas = 540 agent runs.** No pre-parsed data is shipped — the pipeline produces everything from the task JSON files in `tasks/less_sensitive/`.
 
 ## Setup
 
@@ -55,34 +54,30 @@ You should get one log file at `Table8/results_output/less_sensitive/gemini-2.5-
 
 ### 1. Run agents — `run_agent.py`
 
-Once per (model, domain) combination:
+Once per (model, domain) combination — 18 invocations total:
 
 ```bash
 cd Table8
 
-# Gemini 2.5-Flash × 5 domains
-for d in shopping_Amazon_email_modified shopping_Amazon_generic_modified \
-         shopping_ebay_chat_modified shopping_ebay_email_modified \
-         shopping_ebay_generic_modified; do
-  python run_agent.py --model gemini-2.5-flash --domain "$d"
-done
+DOMAINS=(
+  shopping_Amazon_chat_modified
+  shopping_Amazon_email_modified
+  shopping_Amazon_generic_modified
+  shopping_ebay_chat_modified
+  shopping_ebay_email_modified
+  shopping_ebay_generic_modified
+)
 
-# Claude Sonnet 4 × 5 domains
-for d in shopping_Amazon_email_modified shopping_Amazon_generic_modified \
-         shopping_ebay_chat_modified shopping_ebay_email_modified \
-         shopping_ebay_generic_modified; do
-  python run_agent.py --model claude-sonnet-4-0 --domain "$d"
-done
-
-# DeepSeek-R1 × 5 domains
-for d in shopping_Amazon_email_modified shopping_Amazon_generic_modified \
-         shopping_ebay_chat_modified shopping_ebay_email_modified \
-         shopping_ebay_generic_modified; do
-  python run_agent.py --model deepseek-reasoner --domain "$d"
+for m in gemini-2.5-flash claude-sonnet-4-0 deepseek-reasoner; do
+  for d in "${DOMAINS[@]}"; do
+    python run_agent.py --model "$m" --domain "$d"
+  done
 done
 ```
 
 Each invocation iterates 30 personas sequentially, writing one `.log` per persona to `Table8/results_output/less_sensitive/<model>/<domain>/`. Already-logged personas are skipped, so re-running the same command after a transient API failure only retries the missing personas.
+
+If you have multiple terminals, **run the three models in parallel** (one model per terminal) — they don't conflict because output paths are namespaced by model. Domains within a single model run sequentially, since they all write Chromium output through the same browser-use stack.
 
 `run_agent.py` flags:
 - `--model` (required): one of `gpt-4o`, `o3`, `o4-mini`, `claude-sonnet-4-0`, `gemini-2.5-flash`, `deepseek-chat`, `deepseek-reasoner`.
@@ -121,6 +116,8 @@ The script:
 3. Prints a per-(model, domain) breakdown to stdout.
 4. Writes `Table8/results_output/less_sensitive/model_success_rates.csv`.
 
+Note on denominators: `parse_logs.py` drops `.log` files that don't contain any parseable STEP markers (typically runs that crashed before the agent took its first action). Those are excluded from both numerator and denominator — the published Table 8 numbers were computed the same way (e.g. gpt-4o Amazon-chat is `21/27`, not `21/30`). If you want to penalize crashes, copy `parse_logs.py`'s skip logic and have it emit a stub success-status of `❌` instead of dropping.
+
 The shopping rows of that CSV are exactly the cells of Table 8. Extract them:
 
 ```bash
@@ -140,7 +137,9 @@ Rough orders of magnitude per (model × domain × 30 personas) on a single machi
 | Claude Sonnet 4 | ~45–90 min | mid ($10–20) |
 | DeepSeek-R1 | ~60–120 min | low (~$1–5) but more 502s |
 
-Total for the full 15-cell sweep: roughly half a day of wall-clock if you run them sequentially. Personas are not parallelized in `run_agent.py` (one Chromium at a time keeps the failure modes simple); if you want concurrency, run multiple `run_agent.py` invocations in separate terminals — they target disjoint (model, domain) output directories so they won't collide.
+Total for the full 18-cell sweep (3 models × 6 domains × 30 personas = 540 runs): roughly a day of wall-clock if you run sequentially, or **~5–10 hours if you run the three models in parallel terminals**. Total API spend ≈ $60–140, mostly Sonnet.
+
+Personas within a single (model, domain) are not parallelized in `run_agent.py` — one Chromium at a time keeps the failure modes simple. The three model runs are independent though; running them concurrently is the recommended way to reduce wall-clock.
 
 ## Troubleshooting
 
