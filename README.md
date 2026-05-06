@@ -4,6 +4,19 @@ This repository contains code and datasets for evaluating how web browsing agent
 
 The dataset includes task files with personas that contain both relevant and irrelevant personal attributes. When agents interact with websites, we capture their logs to analyze what gets shared and what doesn't.
 
+## Where to start
+
+Pick the folder that matches what you're trying to do — each has its own README with end-to-end instructions, pinned `requirements.txt`, and a smoke-test command:
+
+| Goal | Folder | Entry point |
+|---|---|---|
+| **Reproduce / extend Table 8** (task success rate) and Tables 2/3 + Appendix C (oversharing) for any backbone × either framework | [`Table8/`](Table8/) | `./Table8/run.sh {bu\|ag\|both} --models … --domains …` |
+| **Run any backbone × any task** in either framework, no table-specific assumptions | [`eval_full/`](eval_full/) | `eval_full/browser_use_run.py` and `eval_full/autogen_run.py` |
+| **Score existing trajectories** with the 3-judge LLM-Jury (gpt-4.1-mini + claude-opus-4-5 + deepseek) | [`llm_jury_eval/`](llm_jury_eval/) | `llm_jury_eval/scripts/llm_jury_browseruse.py`, `llm_jury_autogen.py`, `aggregate_to_tables.py` |
+| Original (single-judge) pipelines that produced the v1 numbers | [`Browser-Use/`](Browser-Use/), [`AutoGen/`](AutoGen/) | edit-then-run scripts |
+
+Most collaborators want `Table8/run.sh` — it's a single bash dispatcher that runs the full pipeline (agent runs → parse → task success → LLM-jury → per-backbone LaTeX cells) for either framework or both. See [`Table8/README.md`](Table8/README.md) for the supported backbone slugs, persona ranges, skip-flags, and cost/time estimates.
+
 ## What's Here
 
 The codebase supports two different agent frameworks:
