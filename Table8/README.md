@@ -59,6 +59,43 @@ You should get one log file at `Table8/results_output/less_sensitive/gemini-2.5-
 
 ## Pipeline
 
+### Single command: `run_full_pipeline.py`
+
+For most use cases, this orchestrates everything (agent runs → parse → task success rate → LLM-jury → per-backbone LaTeX cells):
+
+```bash
+cd Table8
+
+# Smoke test on 1 (model, domain, persona) before committing to the full sweep
+python run_full_pipeline.py \
+    --models gemini-2.5-flash \
+    --domains shopping_Amazon_email_modified \
+    --start-persona 1 --end-persona 1
+
+# Full sweep — 3 backbones × 5 missing domains × 30 personas = 450 runs
+python run_full_pipeline.py \
+    --models gemini-2.5-flash claude-sonnet-4-0 deepseek-reasoner \
+    --domains shopping_Amazon_email_modified \
+              shopping_Amazon_generic_modified \
+              shopping_ebay_chat_modified \
+              shopping_ebay_email_modified \
+              shopping_ebay_generic_modified
+
+# Skip-flags for partial reruns
+python run_full_pipeline.py --models o3 --domains shopping_Amazon_chat \
+    --skip-agent-run     # only re-parse + re-score (keeps existing logs)
+python run_full_pipeline.py --models o3 --domains shopping_Amazon_chat \
+    --skip-jury          # only Table 8 success rate, no oversharing eval
+```
+
+Outputs land in two places:
+- **Task success rate (Table 8 cells):** `Table8/results_output/less_sensitive/model_success_rates.csv`
+- **Oversharing (Tables 2, 3, Appendix C):** `llm_jury_eval/tables_filled_<model>.{md,tex}`, with per-domain audit at `llm_jury_eval/results_<model>/<domain>/jury_results_fixed.json`.
+
+The orchestrator passes `--trajectories-dir` to the jury so it reads `Table8/results_output/.../<model>_parsed_json_format/` directly — no copy step.
+
+The remaining sub-sections describe each pipeline stage if you want to invoke them individually.
+
 ### 1. Run agents — `run_agent.py`
 
 Once per (model, domain) combination — **15 invocations total** (Amazon-chat is excluded; see "What you need to run" above):

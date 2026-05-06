@@ -221,9 +221,12 @@ BACKBONE_DIR_MAP = {
 }
 
 
-def run(domain, backbone="gpt-4o"):
-    traj_subdir = BACKBONE_DIR_MAP.get(backbone, f"browseruse_{backbone}_parsed")
-    traj_dir = os.path.join(ROOT, "trajectories", traj_subdir, domain)
+def run(domain, backbone="gpt-4o", trajectories_dir=None):
+    if trajectories_dir:
+        traj_dir = os.path.abspath(os.path.join(trajectories_dir, domain))
+    else:
+        traj_subdir = BACKBONE_DIR_MAP.get(backbone, f"browseruse_{backbone}_parsed")
+        traj_dir = os.path.join(ROOT, "trajectories", traj_subdir, domain)
     persona_file = os.path.join(ROOT, "tasks", "less_sensitive", f"{domain}.json")
     # Per-backbone results directory so different backbones don't overwrite each other.
     results_root = "results" if backbone == "gpt-4o" else f"results_{backbone}"
@@ -358,8 +361,19 @@ def main():
             "Default: gpt-4o."
         ),
     )
+    p.add_argument(
+        "--trajectories-dir",
+        default=None,
+        help=(
+            "Optional override: path to a directory containing "
+            "<domain>/persona_*_parsed.json. If set, the in-repo "
+            "trajectories/ tree is bypassed and this directory is used "
+            "instead. Useful when consuming output from "
+            "Table8/parse_to_json.py without copying files."
+        ),
+    )
     args = p.parse_args()
-    run(args.domain, args.backbone)
+    run(args.domain, args.backbone, args.trajectories_dir)
 
 
 if __name__ == "__main__":
