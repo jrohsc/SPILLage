@@ -221,13 +221,16 @@ BACKBONE_DIR_MAP = {
 }
 
 
-def run(domain, backbone="gpt-4o", trajectories_dir=None):
+def run(domain, backbone="gpt-4o", trajectories_dir=None, tasks_dir=None):
     if trajectories_dir:
         traj_dir = os.path.abspath(os.path.join(trajectories_dir, domain))
     else:
         traj_subdir = BACKBONE_DIR_MAP.get(backbone, f"browseruse_{backbone}_parsed")
         traj_dir = os.path.join(ROOT, "trajectories", traj_subdir, domain)
-    persona_file = os.path.join(ROOT, "tasks", "less_sensitive", f"{domain}.json")
+    if tasks_dir:
+        persona_file = os.path.abspath(os.path.join(tasks_dir, f"{domain}.json"))
+    else:
+        persona_file = os.path.join(ROOT, "tasks", "less_sensitive", f"{domain}.json")
     # Per-backbone results directory so different backbones don't overwrite each other.
     results_root = "results" if backbone == "gpt-4o" else f"results_{backbone}"
     out_dir = os.path.join(ROOT, results_root, domain)
@@ -372,8 +375,19 @@ def main():
             "Table8/parse_to_json.py without copying files."
         ),
     )
+    p.add_argument(
+        "--tasks-dir",
+        default=None,
+        help=(
+            "Optional override: path to the directory containing "
+            "<domain>.json persona files. Defaults to "
+            "llm_jury_eval/tasks/less_sensitive/. Use the repo-root "
+            "tasks/less_sensitive/ when scoring runs that used the "
+            "*_modified persona variants."
+        ),
+    )
     args = p.parse_args()
-    run(args.domain, args.backbone, args.trajectories_dir)
+    run(args.domain, args.backbone, args.trajectories_dir, args.tasks_dir)
 
 
 if __name__ == "__main__":

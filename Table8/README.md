@@ -59,40 +59,70 @@ You should get one log file at `Table8/results_output/less_sensitive/gemini-2.5-
 
 ## Pipeline
 
-### Single command: `run_full_pipeline.py`
+### One command per framework
 
-For most use cases, this orchestrates everything (agent runs → parse → task success rate → LLM-jury → per-backbone LaTeX cells):
+Two orchestrators — pick the one that matches your agent stack:
+
+| Script | Framework | Task-success methodology |
+|---|---|---|
+| `run_full_pipeline_browseruse.py` | `browser-use` library | parsed from agent's self-reported `header.completion_status` |
+| `run_full_pipeline_autogen.py` | AutoGen `MultimodalWebSurfer` | LLM-judged via `gpt-4.1-mini` (final agent output → success/fail) |
+
+Both wire up the same six stages (run → parse → task-success → LLM-jury → aggregate) and write per-backbone LaTeX cells to `llm_jury_eval/tables_filled_<model>.{md,tex}`.
+
+#### Browser-Use
 
 ```bash
 cd Table8
 
-# Smoke test on 1 (model, domain, persona) before committing to the full sweep
-python run_full_pipeline.py \
+# Smoke test
+python run_full_pipeline_browseruse.py \
     --models gemini-2.5-flash \
     --domains shopping_Amazon_email_modified \
     --start-persona 1 --end-persona 1
 
-# Full sweep — 3 backbones × 5 missing domains × 30 personas = 450 runs
-python run_full_pipeline.py \
+# Full sweep — 3 backbones × 5 missing Table 8 cells × 30 personas = 450 runs
+python run_full_pipeline_browseruse.py \
     --models gemini-2.5-flash claude-sonnet-4-0 deepseek-reasoner \
     --domains shopping_Amazon_email_modified \
               shopping_Amazon_generic_modified \
               shopping_ebay_chat_modified \
               shopping_ebay_email_modified \
               shopping_ebay_generic_modified
+```
+Task success rate output: `Table8/results_output/less_sensitive/model_success_rates.csv`.
 
-# Skip-flags for partial reruns
-python run_full_pipeline.py --models o3 --domains shopping_Amazon_chat \
-    --skip-agent-run     # only re-parse + re-score (keeps existing logs)
-python run_full_pipeline.py --models o3 --domains shopping_Amazon_chat \
-    --skip-jury          # only Table 8 success rate, no oversharing eval
+#### AutoGen
+
+```bash
+cd Table8
+
+# Smoke test
+python run_full_pipeline_autogen.py \
+    --models gemini-2.5-flash \
+    --domains shopping_Amazon_chat_modified \
+    --start-persona 1 --end-persona 1
+
+# Full sweep — note: deepseek-reasoner is refused (R1 is text-only;
+# MultimodalWebSurfer needs vision)
+python run_full_pipeline_autogen.py \
+    --models gpt-4o o3 o4-mini gemini-2.5-flash claude-sonnet-4-0 \
+    --domains shopping_Amazon_chat_modified shopping_Amazon_email_modified \
+              shopping_Amazon_generic_modified \
+              shopping_ebay_chat_modified shopping_ebay_email_modified \
+              shopping_ebay_generic_modified
+```
+Task success rate output: `Table8/results_utility_eval_autogen/model_success_rates_autogen.csv`.
+
+#### Skip-flags (both orchestrators)
+
+```bash
+--skip-agent-run    # re-parse + re-score with existing logs
+--skip-jury         # only task-success rate; no oversharing eval
+--start-persona N --end-persona M    # restrict persona range
 ```
 
-Outputs land in two places:
-- **Task success rate (Table 8 cells):** `Table8/results_output/less_sensitive/model_success_rates.csv`
-- **Oversharing (Tables 2, 3, Appendix C):** `llm_jury_eval/tables_filled_<model>.{md,tex}`, with per-domain audit at `llm_jury_eval/results_<model>/<domain>/jury_results_fixed.json`.
-
-The orchestrator passes `--trajectories-dir` to the jury so it reads `Table8/results_output/.../<model>_parsed_json_format/` directly — no copy step.
+Both orchestrators pass `--trajectories-dir` to the jury so it reads parsed JSONs directly from `Table8/...` — no manual copy into `llm_jury_eval/trajectories/`.
 
 The remaining sub-sections describe each pipeline stage if you want to invoke them individually.
 

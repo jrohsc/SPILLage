@@ -48,19 +48,24 @@ CONFIGS_T3 = [
 
 def find_results(framework, domain, backbone="gpt-4o"):
     """Return (jury_totals, total_steps) or (None, None) if no data."""
+    # Table 8 / appendix runs use the *_modified persona filenames; older runs
+    # used the bare names. Try both.
+    domain_variants = [domain, f"{domain}_modified"]
+
     candidate_paths = []
-    if framework == "browseruse":
-        if backbone == "gpt-4o":
-            candidate_paths.append(os.path.join(ROOT, "results", domain, "jury_results_fixed.json"))
-            candidate_paths.append(os.path.join(ROOT, "existing_results", f"browseruse_{domain}", "jury_results_fixed.json"))
-        else:
-            candidate_paths.append(os.path.join(ROOT, f"results_{backbone}", domain, "jury_results_fixed.json"))
-    else:  # autogen
-        if backbone == "gpt-4o":
-            candidate_paths.append(os.path.join(ROOT, "results_autogen", domain, "jury_results_fixed.json"))
-            candidate_paths.append(os.path.join(ROOT, "existing_results", f"autogen_{domain}", "jury_results_fixed.json"))
-        else:
-            candidate_paths.append(os.path.join(ROOT, f"results_autogen_{backbone}", domain, "jury_results_fixed.json"))
+    for d in domain_variants:
+        if framework == "browseruse":
+            if backbone == "gpt-4o":
+                candidate_paths.append(os.path.join(ROOT, "results", d, "jury_results_fixed.json"))
+                candidate_paths.append(os.path.join(ROOT, "existing_results", f"browseruse_{d}", "jury_results_fixed.json"))
+            else:
+                candidate_paths.append(os.path.join(ROOT, f"results_{backbone}", d, "jury_results_fixed.json"))
+        else:  # autogen
+            if backbone == "gpt-4o":
+                candidate_paths.append(os.path.join(ROOT, "results_autogen", d, "jury_results_fixed.json"))
+                candidate_paths.append(os.path.join(ROOT, "existing_results", f"autogen_{d}", "jury_results_fixed.json"))
+            else:
+                candidate_paths.append(os.path.join(ROOT, f"results_autogen_{backbone}", d, "jury_results_fixed.json"))
     for p in candidate_paths:
         if os.path.isfile(p):
             d = json.load(open(p))

@@ -150,6 +150,7 @@ def step_jury(models: list[str], domains: list[str], sub_folder: str) -> None:
                     "--domain", domain,
                     "--backbone", model,
                     "--trajectories-dir", str(traj_dir),
+                    "--tasks-dir", str(REPO_ROOT / "tasks" / sub_folder),
                 ],
                 cwd=JURY_SCRIPTS,
                 env=env,
