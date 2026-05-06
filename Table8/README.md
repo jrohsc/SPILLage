@@ -4,7 +4,7 @@ Self-contained pipeline for filling in the **Browser-Use rows of Table 8** in th
 
 ## What you need to run
 
-You're running **all six shopping domains** for each of three backbones, 30 personas each:
+You're running **the five remaining shopping domains** for each of three backbones, 30 personas each. The `shopping_Amazon_chat` cell is already filled in Table 8 from the rebuttal sweep (Gemini 0.767, DeepSeek-R1 0.700, Claude-Sonnet-4 0.930) and is **not** re-run here.
 
 | Backbone | Slug used here | API key |
 |---|---|---|
@@ -13,7 +13,6 @@ You're running **all six shopping domains** for each of three backbones, 30 pers
 | DeepSeek-R1 | `deepseek-reasoner` | `DEEPSEEK_API_KEY` |
 
 ```
-shopping_Amazon_chat_modified
 shopping_Amazon_email_modified
 shopping_Amazon_generic_modified
 shopping_ebay_chat_modified
@@ -21,7 +20,7 @@ shopping_ebay_email_modified
 shopping_ebay_generic_modified
 ```
 
-Total: **3 backbones × 6 domains × 30 personas = 540 agent runs.** No pre-parsed data is shipped — the pipeline produces everything from the task JSON files in `tasks/less_sensitive/`.
+Total: **3 backbones × 5 domains × 30 personas = 450 agent runs.** No pre-parsed data is shipped — the pipeline produces everything from the task JSON files in `tasks/less_sensitive/`.
 
 ## Setup
 
@@ -54,13 +53,12 @@ You should get one log file at `Table8/results_output/less_sensitive/gemini-2.5-
 
 ### 1. Run agents — `run_agent.py`
 
-Once per (model, domain) combination — 18 invocations total:
+Once per (model, domain) combination — **15 invocations total** (Amazon-chat is excluded; see "What you need to run" above):
 
 ```bash
 cd Table8
 
 DOMAINS=(
-  shopping_Amazon_chat_modified
   shopping_Amazon_email_modified
   shopping_Amazon_generic_modified
   shopping_ebay_chat_modified
@@ -118,14 +116,14 @@ The script:
 
 Note on denominators: `parse_logs.py` drops `.log` files that don't contain any parseable STEP markers (typically runs that crashed before the agent took its first action). Those are excluded from both numerator and denominator — the published Table 8 numbers were computed the same way (e.g. gpt-4o Amazon-chat is `21/27`, not `21/30`). If you want to penalize crashes, copy `parse_logs.py`'s skip logic and have it emit a stub success-status of `❌` instead of dropping.
 
-The shopping rows of that CSV are exactly the cells of Table 8. Extract them:
+The shopping rows of that CSV are the new cells of Table 8 (everything except the already-filled `shopping_Amazon_chat` column). Extract them:
 
 ```bash
 grep -E "^(shopping_Amazon|shopping_ebay)" \
   results_output/less_sensitive/model_success_rates.csv
 ```
 
-The CSV reports percentages (e.g. `83.33`); the paper uses proportions (`0.833`), so divide by 100 before pasting into `oversharing-neurips/tables/browser-use-utility.tex`.
+The CSV reports percentages (e.g. `83.33`); the paper uses proportions (`0.833`), so divide by 100 before pasting into `oversharing-neurips/tables/browser-use-utility.tex`. **Do not overwrite the Amazon-chat cells** — those came from a different (rebuttal) run with a 30-persona denominator and would not be reproducible from this pipeline.
 
 ## Cost / time estimate
 
@@ -137,7 +135,7 @@ Rough orders of magnitude per (model × domain × 30 personas) on a single machi
 | Claude Sonnet 4 | ~45–90 min | mid ($10–20) |
 | DeepSeek-R1 | ~60–120 min | low (~$1–5) but more 502s |
 
-Total for the full 18-cell sweep (3 models × 6 domains × 30 personas = 540 runs): roughly a day of wall-clock if you run sequentially, or **~5–10 hours if you run the three models in parallel terminals**. Total API spend ≈ $60–140, mostly Sonnet.
+Total for the 15-cell sweep (3 models × 5 domains × 30 personas = 450 runs): roughly 18 hours of wall-clock if you run sequentially, or **~5–9 hours if you run the three models in parallel terminals**. Total API spend ≈ $50–120, mostly Sonnet.
 
 Personas within a single (model, domain) are not parallelized in `run_agent.py` — one Chromium at a time keeps the failure modes simple. The three model runs are independent though; running them concurrently is the recommended way to reduce wall-clock.
 
