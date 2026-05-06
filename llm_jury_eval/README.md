@@ -91,13 +91,45 @@ override with `MAX_PARALLEL=2` if Anthropic rate limits hit. Logs land in
 ### Build Tables 2 & 3
 
 ```bash
-python scripts/aggregate_to_tables.py
+python scripts/aggregate_to_tables.py                  # gpt-4o (default)
+python scripts/aggregate_to_tables.py --backbone o3    # appendix C: o3
+python scripts/aggregate_to_tables.py --backbone o4-mini  # appendix C: o4-mini
 ```
 
-Writes `tables_filled.md` (Markdown view) and `tables_filled.tex` (LaTeX cells
-ready to drop into the paper). The script merges results from `results/`,
-`results_autogen/`, and the pre-shipped `existing_results/`. Cells without data
-print as `---`.
+Writes `tables_filled.md` / `tables_filled.tex` for the gpt-4o run, or
+`tables_filled_<backbone>.md` / `tables_filled_<backbone>.tex` for non-default
+backbones (avoids overwriting the main-paper output). The script merges results
+from:
+- `results/<domain>/` and `results_autogen/<domain>/` (gpt-4o)
+- `results_<backbone>/<domain>/` and `results_autogen_<backbone>/<domain>/` (other backbones)
+- the pre-shipped `existing_results/` (gpt-4o only).
+
+Cells without data print as `---`.
+
+#### Workflow for the appendix C tables (o3, o4-mini)
+
+The trajectories for both backbones are already shipped in
+`trajectories/browseruse_{o3,o4-mini}_parsed/` and
+`trajectories/autogen_{o3,o4-mini}_processed/`. To produce the appendix
+tables (Explicit Oversharing: Additional Models — Amazon/eBay; Implicit
+Oversharing: Additional Models — Browser-Use):
+
+```bash
+DOMAINS=(shopping_Amazon_chat shopping_Amazon_email shopping_Amazon_generic \
+         shopping_ebay_chat   shopping_ebay_email   shopping_ebay_generic)
+for backbone in o3 o4-mini; do
+  for d in "${DOMAINS[@]}"; do
+    python scripts/llm_jury_browseruse.py --domain "$d" --backbone "$backbone"
+    python scripts/llm_jury_autogen.py    --domain "$d" --backbone "$backbone"
+  done
+  python scripts/aggregate_to_tables.py --backbone "$backbone"
+done
+```
+
+The Browser-Use rows of each `tables_filled_<backbone>.tex` map to the
+appendix tables `tab_amazon_explicit_o3_o4-mini`,
+`tab_ebay_explicit_o3_o4-mini`, and `tab_implicit_browser-use_o3_o4-mini`
+in `oversharing-neurips/tables/`.
 
 ## Already-completed cells
 

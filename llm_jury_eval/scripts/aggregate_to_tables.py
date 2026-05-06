@@ -46,15 +46,21 @@ CONFIGS_T3 = [
 ]
 
 
-def find_results(framework, domain):
+def find_results(framework, domain, backbone="gpt-4o"):
     """Return (jury_totals, total_steps) or (None, None) if no data."""
     candidate_paths = []
     if framework == "browseruse":
-        candidate_paths.append(os.path.join(ROOT, "results", domain, "jury_results_fixed.json"))
-        candidate_paths.append(os.path.join(ROOT, "existing_results", f"browseruse_{domain}", "jury_results_fixed.json"))
+        if backbone == "gpt-4o":
+            candidate_paths.append(os.path.join(ROOT, "results", domain, "jury_results_fixed.json"))
+            candidate_paths.append(os.path.join(ROOT, "existing_results", f"browseruse_{domain}", "jury_results_fixed.json"))
+        else:
+            candidate_paths.append(os.path.join(ROOT, f"results_{backbone}", domain, "jury_results_fixed.json"))
     else:  # autogen
-        candidate_paths.append(os.path.join(ROOT, "results_autogen", domain, "jury_results_fixed.json"))
-        candidate_paths.append(os.path.join(ROOT, "existing_results", f"autogen_{domain}", "jury_results_fixed.json"))
+        if backbone == "gpt-4o":
+            candidate_paths.append(os.path.join(ROOT, "results_autogen", domain, "jury_results_fixed.json"))
+            candidate_paths.append(os.path.join(ROOT, "existing_results", f"autogen_{domain}", "jury_results_fixed.json"))
+        else:
+            candidate_paths.append(os.path.join(ROOT, f"results_autogen_{backbone}", domain, "jury_results_fixed.json"))
     for p in candidate_paths:
         if os.path.isfile(p):
             d = json.load(open(p))
@@ -72,10 +78,10 @@ def fmt_rate(occ, steps):
     return f"{occ / steps:.4f}" if (occ is not None and steps and steps > 0) else "---"
 
 
-def render_table2():
+def render_table2(backbone="gpt-4o"):
     rows = []
     for site, fw, prompt, fw_key, domain in CONFIGS_T2:
-        jury, steps = find_results(fw_key, domain)
+        jury, steps = find_results(fw_key, domain, backbone)
         if jury is None:
             row = (site, fw, prompt, "---", "---", "---", "---")
         else:
@@ -86,10 +92,10 @@ def render_table2():
     return rows
 
 
-def render_table3():
+def render_table3(backbone="gpt-4o"):
     rows = []
     for site, prompt, fw_key, domain in CONFIGS_T3:
-        jury, steps = find_results(fw_key, domain)
+        jury, steps = find_results(fw_key, domain, backbone)
         if jury is None:
             row = (site, prompt, "---", "---", "---", "---")
         else:
@@ -139,23 +145,43 @@ def write_tex(t2, t3, path):
 
 
 def main():
-    t2 = render_table2()
-    t3 = render_table3()
+    import argparse
+    p = argparse.ArgumentParser(
+        description=(
+            "Build Tables 2 & 3 (gpt-4o, default) or the appendix C.2/C.3 "
+            "tables (--backbone o3 / o4-mini) from per-domain jury outputs."
+        )
+    )
+    p.add_argument(
+        "--backbone",
+        default="gpt-4o",
+        help=(
+            "Agent backbone whose jury results to aggregate. Default gpt-4o "
+            "reads from results/ and results_autogen/. Other backbones read "
+            "from results_<backbone>/ and results_autogen_<backbone>/."
+        ),
+    )
+    args = p.parse_args()
 
-    md_path = os.path.join(ROOT, "tables_filled.md")
-    tex_path = os.path.join(ROOT, "tables_filled.tex")
+    t2 = render_table2(args.backbone)
+    t3 = render_table3(args.backbone)
+
+    suffix = "" if args.backbone == "gpt-4o" else f"_{args.backbone}"
+    md_path = os.path.join(ROOT, f"tables_filled{suffix}.md")
+    tex_path = os.path.join(ROOT, f"tables_filled{suffix}.tex")
     write_md(t2, t3, md_path)
     write_tex(t2, t3, tex_path)
 
+    label = "Tables 2 & 3" if args.backbone == "gpt-4o" else f"Appendix tables (backbone: {args.backbone})"
     print("=" * 70)
-    print("Table 2 — Explicit oversharing")
+    print(f"{label} — Explicit oversharing")
     print("=" * 70)
     print(f"{'Site':<8} {'Framework':<12} {'Prompt':<8} {'BE Occ':<8} {'Rate':<8} {'CE Occ':<8} {'Rate':<8}")
     for r in t2:
         print(f"{r[0]:<8} {r[1]:<12} {r[2]:<8} {r[3]:<8} {r[4]:<8} {r[5]:<8} {r[6]:<8}")
     print()
     print("=" * 70)
-    print("Table 3 — Implicit oversharing (Browser-Use)")
+    print(f"{label} — Implicit oversharing (Browser-Use)")
     print("=" * 70)
     print(f"{'Site':<8} {'Prompt':<8} {'CI Occ':<8} {'Rate':<8} {'BI Occ':<8} {'Rate':<8}")
     for r in t3:
