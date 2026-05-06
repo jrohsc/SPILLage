@@ -1,0 +1,19 @@
+# Pinned to versions that have been smoke-tested end-to-end against
+# both runners (browser_use_run.py and autogen_run.py) on a fresh
+# Python 3.12 venv.
+#
+# Use the [all] extra for browser-use: the bare package omits
+# google-genai, which would make ChatGoogle break and (before the
+# lazy-import fix) block runs of every other backbone too.
+browser-use[all]>=0.12.6
+python-dotenv>=1.0.0
+
+# AutoGen MultimodalWebSurfer + the OpenAI-compatible client used to
+# route Gemini / DeepSeek through their /v1 endpoints. The model_info=
+# kwarg shape used in autogen_run.py requires autogen-ext >= 0.7.x.
+autogen-ext[openai,anthropic,web-surfer]>=0.7.5
+autogen-agentchat>=0.7.5
+
+# Browser binary; install separately after pip:
+#   playwright install chromium
+playwright>=1.59.0

@@ -1,0 +1,13 @@
+# Pinned to versions that have been smoke-tested end-to-end against
+# every supported backbone (gpt-4o, o3, o4-mini, gemini-2.5-flash,
+# claude-sonnet-4-0, deepseek-chat, deepseek-reasoner).
+#
+# Use the [all] extra explicitly: the bare `browser-use` package omits
+# google-genai, which makes ChatGoogle import-time fail and (before
+# the lazy-import fix) blocks runs of every other backbone too.
+browser-use[all]>=0.12.6
+python-dotenv>=1.0.0
+
+# Browser binary; install separately after pip:
+#   playwright install chromium
+playwright>=1.59.0

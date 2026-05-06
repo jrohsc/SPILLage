@@ -15,11 +15,21 @@ Why no `deepseek-reasoner` (DeepSeek-R1) for AutoGen: `MultimodalWebSurfer` feed
 
 ## Setup
 
+Python 3.11+ (tested on 3.12) in a fresh venv.
+
 ```bash
-pip install "browser-use[all]" "autogen-ext[openai,anthropic,web-surfer]" \
-            autogen-agentchat python-dotenv
+cd eval_full
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
 playwright install chromium
 ```
+
+The pinned versions in `requirements.txt` have been smoke-tested end-to-end
+on a fresh install against:
+- Browser-Use × Claude-Sonnet-4 (full Amazon trajectory)
+- Browser-Use × Gemini-2.5-Flash (12+ steps, real Amazon navigation)
+- AutoGen × Claude-Sonnet-4 (3 turns, search + sort)
+- AutoGen × Gemini-2.5-Flash (3 turns, full plan + price-sorted summary)
 
 `.env` at the repo root with whichever keys you need:
 

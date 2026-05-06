@@ -24,11 +24,19 @@ Total: **3 backbones × 5 domains × 30 personas = 450 agent runs.** No pre-pars
 
 ## Setup
 
+Python 3.11+ (tested on 3.12) in a fresh venv.
+
 ```bash
-# from the repo root
-pip install "browser-use[all]" python-dotenv
+cd Table8
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
 playwright install chromium
 ```
+
+Why the `[all]` extra in `requirements.txt` matters: the bare `browser-use`
+package omits `google-genai`, which makes `ChatGoogle` fail to import. The
+runner's lazy imports keep that from breaking other backbones, but Gemini
+itself only works with the full extras.
 
 Create a `.env` at the **repo root** (one level up from this folder) containing whichever keys you need:
 
