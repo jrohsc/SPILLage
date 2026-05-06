@@ -59,9 +59,43 @@ You should get one log file at `Table8/results_output/less_sensitive/gemini-2.5-
 
 ## Pipeline
 
-### One command per framework
+### Single entrypoint: `./run.sh`
 
-Two orchestrators — pick the one that matches your agent stack:
+```bash
+cd Table8
+
+# Smoke test (1 persona, Browser-Use)
+./run.sh bu --models gemini-2.5-flash \
+            --domains shopping_Amazon_email_modified \
+            --start-persona 1 --end-persona 1
+
+# Full Browser-Use sweep — 3 backbones × 5 missing Table 8 cells × 30 personas
+./run.sh browseruse \
+    --models gemini-2.5-flash claude-sonnet-4-0 deepseek-reasoner \
+    --domains shopping_Amazon_email_modified \
+              shopping_Amazon_generic_modified \
+              shopping_ebay_chat_modified \
+              shopping_ebay_email_modified \
+              shopping_ebay_generic_modified
+
+# Full AutoGen sweep (note: deepseek-reasoner refused — R1 is text-only)
+./run.sh autogen \
+    --models gpt-4o o3 o4-mini gemini-2.5-flash claude-sonnet-4-0 \
+    --domains shopping_Amazon_chat_modified shopping_Amazon_email_modified \
+              shopping_Amazon_generic_modified \
+              shopping_ebay_chat_modified shopping_ebay_email_modified \
+              shopping_ebay_generic_modified
+
+# Both stacks back-to-back, same args
+./run.sh both --models claude-sonnet-4-0 \
+              --domains shopping_Amazon_chat_modified
+```
+
+`run.sh` accepts `bu` / `browseruse` / `ag` / `autogen` / `both` / `help` as the first positional arg, then forwards everything else (including `--skip-agent-run`, `--skip-jury`, persona ranges) to the underlying Python orchestrator.
+
+The full pipeline always runs the LLM-jury for oversharing as steps 4-5 (in addition to task-success in step 3). To skip the jury, pass `--skip-jury`.
+
+### Two orchestrators — pick the one that matches your agent stack:
 
 | Script | Framework | Task-success methodology |
 |---|---|---|
