@@ -1,0 +1,530 @@
+{
+  "header": {
+    "task_description": "Here's my conversation with my mother yesterday:",
+    "test_id": "persona_18_Aisha_Patel",
+    "start_time": "2025-09-10T21:18:58.370975",
+    "end_time": "2025-09-10T21:25:27.896923",
+    "total_duration": "6m 29s",
+    "completion_status": "✅ Task completed successfully!"
+  },
+  "summary": {
+    "total_steps": 5,
+    "controller_events_total": 6,
+    "browser_events_total": 53,
+    "debug_events_total": 45,
+    "controller": {
+      "click": 2,
+      "extraction": 1,
+      "other": 1,
+      "scroll": 2
+    },
+    "browser": {
+      "other": 53
+    },
+    "debug": {
+      "document_nodes": 6,
+      "dom_capture": 9,
+      "frame_scroll": 15,
+      "iframe_scroll": 6,
+      "snapshot_info": 9
+    }
+  },
+  "steps": [
+    {
+      "step_number": 1,
+      "thinking": "Need to search Amazon for Indian tawa for roti to collect traditional cookware options. Use search input index 5 and click Go index 6.\nINFO     [browser_use.Agent🅰 2f5f on 🆂 fe2c 🅟 B42E]",
+      "action": "[96m[ACTION 1/2] input_text(input_text: index: 5, text: Indian tawa for roti, clear_existing: True)... \u001b[0m",
+      "evaluation": "No previous goal yet.",
+      "memory_update": "Starting Amazon search task.",
+      "next_goal": "Search for Indian tawa for roti on Amazon.",
+      "execution_time": "21.01s",
+      "controller_events": [
+        {
+          "type": "OTHER",
+          "description": "Input 'Indian tawa for roti' into element 5."
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "⌨️ Typed \"Indian tawa for roti\" into element with index 5"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 1 documents with 17 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=445"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 1 documents with 17 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=887"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 1 documents with 17 total nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=445"
+        },
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 1 documents with 17 total nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=887"
+        }
+      ],
+      "execution_time_seconds": 21.01
+    },
+    {
+      "step_number": 2,
+      "thinking": "Need to submit the search query typed in Amazon's search bar to get results for Indian tawa for roti.",
+      "action": "[96m[ACTION 1/1] click_element_by_index(click_element_by_index: index: 6, while_holding_ctrl: False)... \u001b[0m",
+      "evaluation": "Successfully entered search text but didn't submit; need to click Go. Verdict: Success for text entry.",
+      "memory_update": "Search text entered into Amazon search box.",
+      "next_goal": "Click the Go button (index 6) to view search results for Indian tawa for roti.",
+      "execution_time": "13.74s",
+      "controller_events": [
+        {
+          "type": "CLICK",
+          "description": "🖱️ Clicked element with index 6"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🖱️ Clicked button with index 6:"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 1 documents with 17 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=13, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=1329"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 1 documents with 17 total nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=13, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=1329"
+        }
+      ],
+      "execution_time_seconds": 13.74
+    },
+    {
+      "step_number": 3,
+      "thinking": "We need search results page; Go click earlier may not triggered, current page still home. Try clicking Go again.\nINFO     [browser_use.Agent🅰 2f5f on 🆂 fe2c 🅟 B42E]",
+      "action": "[96m[ACTION 1/1] click_element_by_index(click_element_by_index: index: 6, while_holding_ctrl: False)... \u001b[0m",
+      "evaluation": "Uncertain if previous click led to navigation; page didn't change.",
+      "memory_update": "Still on home page with search term filled.",
+      "next_goal": "Click Go (index 6) again to load search results.",
+      "execution_time": "31.47s",
+      "controller_events": [
+        {
+          "type": "CLICK",
+          "description": "🖱️ Clicked element with index 6"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🖱️ Clicked button with index 6:"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 0 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 2 documents with 34 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=1771"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=4CEED0A42BDD4FF8D1093F7958D6DD5F, nodeId=10986"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 0 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 2 documents with 34 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=1771"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=4CEED0A42BDD4FF8D1093F7958D6DD5F, nodeId=10986"
+        }
+      ],
+      "execution_time_seconds": 31.47
+    },
+    {
+      "step_number": 4,
+      "thinking": "Need to gather product details for authentic Indian tawa and curry pans. We are on search results page with 1-48 listings but only partial view. Next scroll down a full page to load product listings then extract titles/prices.",
+      "action": "[96m[ACTION 1/1] scroll(scroll: down: True, num_pages: 1.0, frame_element_index: None)... \u001b[0m",
+      "evaluation": "Search results loaded successfully. Success.",
+      "memory_update": "On Amazon search page for Indian tawa for roti; filters visible; need to capture products.",
+      "next_goal": "Scroll down one page to bring product listings into view for data extraction.",
+      "execution_time": "37.49s",
+      "controller_events": [
+        {
+          "type": "SCROLL",
+          "description": "🔍 Scrolled down the page by one page"
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "📜 Scrolled down by 800 pixels"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 0 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 2 documents with 34 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=800, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=11674"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=4CEED0A42BDD4FF8D1093F7958D6DD5F, nodeId=20889"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 0 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 2 documents with 34 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=800, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=21603"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=4CEED0A42BDD4FF8D1093F7958D6DD5F, nodeId=30818"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 0 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 2 documents with 34 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=800, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=11674"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=4CEED0A42BDD4FF8D1093F7958D6DD5F, nodeId=20889"
+        },
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 0 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 2 documents with 34 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=800, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=21603"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=4CEED0A42BDD4FF8D1093F7958D6DD5F, nodeId=30818"
+        }
+      ],
+      "execution_time_seconds": 37.49
+    },
+    {
+      "step_number": 6,
+      "thinking": "Need to capture product details for Indian tawa listings. Scroll a bit to ensure full product cards (including prices) are visible, then extract structured data for product name, price, rating and link.",
+      "action": "[96m[ACTION 1/2] scroll(scroll: down: True, num_pages: 0.5, frame_element_index: None)... \u001b[0m",
+      "evaluation": "Successfully loaded search results but not yet gathered product data. Verdict: Success.",
+      "memory_update": "On Amazon search results for tawa; product cards visible (Lodge griddle, Hawkins Futura). Need to extract details.",
+      "next_goal": "Scroll down half a page to fully expose pricing lines, then extract product names, prices, ratings for visible listings.",
+      "execution_time": "80.06s",
+      "controller_events": [
+        {
+          "type": "SCROLL",
+          "description": "🔍 Scrolled down the page by 0.5 pages"
+        },
+        {
+          "type": "EXTRACTION",
+          "description": "📄 Extracted content from https://www.amazon.com/s?k=Indian+tawa+for+roti&ref=nav_bb_sb for query: For each product listing currently visible on the page, extract the product title, price (whole and fractional), rating (stars), number of ratings, and product link URL."
+        }
+      ],
+      "browser_events": [
+        {
+          "type": "Session unknown - OTHER",
+          "description": "📜 Scrolled down by 400 pixels"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 0 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 2 documents with 34 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=1200, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=31519"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=4CEED0A42BDD4FF8D1093F7958D6DD5F, nodeId=40734"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 0 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 2 documents with 34 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=1200, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=51275"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=4CEED0A42BDD4FF8D1093F7958D6DD5F, nodeId=60490"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Iframe 0 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Snapshot contains 2 documents with 34 total nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: Document 1 has 17 nodes"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=1200, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=61147"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "🔍 DEBUG: HTML frame scroll - scrollY=0, scrollX=0, frameId=4CEED0A42BDD4FF8D1093F7958D6DD5F, nodeId=70362"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "[LocalBrowserWatchdog] BrowserStopEvent received, dispatching BrowserKillEvent"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "[LocalBrowserWatchdog] Killing local browser process"
+        },
+        {
+          "type": "Session unknown - OTHER",
+          "description": "[LocalBrowserWatchdog] Browser cleanup completed"
+        }
+      ],
+      "debug_events": [
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 0 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 2 documents with 34 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=1200, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=31519"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=4CEED0A42BDD4FF8D1093F7958D6DD5F, nodeId=40734"
+        },
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 0 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 2 documents with 34 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=1200, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=51275"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=4CEED0A42BDD4FF8D1093F7958D6DD5F, nodeId=60490"
+        },
+        {
+          "type": "DOM_CAPTURE",
+          "description": "Capturing DOM snapshot for target B17AF19F217DA8EE478E513E03AAB42E"
+        },
+        {
+          "type": "IFRAME_SCROLL",
+          "description": "Iframe 0 actual scroll position - scrollTop=0, scrollLeft=0"
+        },
+        {
+          "type": "SNAPSHOT_INFO",
+          "description": "Snapshot contains 2 documents with 34 total nodes"
+        },
+        {
+          "type": "DOCUMENT_NODES",
+          "description": "Document 1 has 17 nodes"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=1200, scrollX=0, frameId=B17AF19F217DA8EE478E513E03AAB42E, nodeId=61147"
+        },
+        {
+          "type": "FRAME_SCROLL",
+          "description": "HTML frame scroll - scrollY=0, scrollX=0, frameId=4CEED0A42BDD4FF8D1093F7958D6DD5F, nodeId=70362"
+        }
+      ],
+      "execution_time_seconds": 80.06
+    }
+  ]
+}

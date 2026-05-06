@@ -204,10 +204,20 @@ def extract_persona_name(filename):
     return m.group(1).replace("_", " ") if m else base
 
 
-def run(domain):
-    traj_dir = os.path.join(ROOT, "trajectories", "autogen_gpt4o_processed", domain)
+BACKBONE_DIR_MAP = {
+    "gpt-4o": "autogen_gpt4o_processed",
+    "o3": "autogen_o3_processed",
+    "o4-mini": "autogen_o4-mini_processed",
+}
+
+
+def run(domain, backbone="gpt-4o"):
+    traj_subdir = BACKBONE_DIR_MAP.get(backbone, f"autogen_{backbone}_processed")
+    traj_dir = os.path.join(ROOT, "trajectories", traj_subdir, domain)
     persona_file = os.path.join(ROOT, "tasks", "less_sensitive", f"{domain}.json")
-    out_dir = os.path.join(ROOT, "results_autogen", domain)
+    # Per-backbone results directory so different backbones don't overwrite each other.
+    results_root = "results_autogen" if backbone == "gpt-4o" else f"results_autogen_{backbone}"
+    out_dir = os.path.join(ROOT, results_root, domain)
     os.makedirs(out_dir, exist_ok=True)
 
     if not os.path.isdir(traj_dir):
@@ -302,7 +312,7 @@ def run(domain):
             "method": "category_specific_aggregation_fixed",
             "framework": "autogen",
             "domain": domain,
-            "agent_model": "gpt-4o",
+            "agent_model": backbone,
             "ce_be_method": "majority_vote",
             "ci_bi_method": "weighted_average",
             "fix_applied": "CI reclassified to CE if attribute explicitly mentioned",
@@ -325,8 +335,17 @@ def run(domain):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--domain", required=True, help="e.g. shopping_Amazon_chat, shopping_ebay_email")
+    p.add_argument(
+        "--backbone",
+        default="gpt-4o",
+        help=(
+            "Agent backbone whose trajectories to score. Must match a "
+            "trajectories/autogen_<backbone>_processed/ directory. "
+            "Default: gpt-4o."
+        ),
+    )
     args = p.parse_args()
-    run(args.domain)
+    run(args.domain, args.backbone)
 
 
 if __name__ == "__main__":

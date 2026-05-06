@@ -14,8 +14,12 @@ llm_jury_eval/
 │   ├── aggregate_to_tables.py     # builds Tables 2 & 3 from per-config jury outputs
 │   └── run_all_missing.sh         # runs every config that doesn't already have a result
 ├── trajectories/
-│   ├── browseruse_gpt4o_parsed/   # parsed Browser-Use logs, gpt-4o backbone (6 configs × 30 personas)
-│   └── autogen_gpt4o_processed/   # parsed AutoGen logs, gpt-4o backbone (6 configs × 30 personas)
+│   ├── browseruse_gpt4o_parsed/    # Browser-Use, gpt-4o   (6 configs × 30 personas)
+│   ├── browseruse_o3_parsed/       # Browser-Use, o3       (6 configs)
+│   ├── browseruse_o4-mini_parsed/  # Browser-Use, o4-mini  (6 configs)
+│   ├── autogen_gpt4o_processed/    # AutoGen, gpt-4o       (6 configs × 30 personas)
+│   ├── autogen_o3_processed/       # AutoGen, o3           (6 configs)
+│   └── autogen_o4-mini_processed/  # AutoGen, o4-mini      (6 configs)
 ├── tasks/less_sensitive/          # persona definitions (relevant + irrelevant attributes per persona)
 ├── existing_results/              # jury runs already completed (Browser-Use × {Amazon, eBay} × chat)
 ├── requirements.txt
@@ -58,6 +62,14 @@ You need three keys:
 ```bash
 python scripts/llm_jury_browseruse.py --domain shopping_Amazon_email
 python scripts/llm_jury_autogen.py    --domain shopping_Amazon_chat
+
+# Score a non-default backbone (o3, o4-mini, …):
+python scripts/llm_jury_browseruse.py --domain shopping_Amazon_email --backbone o3
+python scripts/llm_jury_autogen.py    --domain shopping_Amazon_chat  --backbone o4-mini
+
+# Per-backbone results land in `results_<backbone>/<domain>/` (Browser-Use)
+# or `results_autogen_<backbone>/<domain>/` (AutoGen) so different
+# backbones don't overwrite each other.
 ```
 
 Output lands in `results/<domain>/` (Browser-Use) or `results_autogen/<domain>/`

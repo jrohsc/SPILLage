@@ -214,10 +214,20 @@ def safe_judge(fn, prompt):
         return f"Error: {e}", {"CE": 0, "CI": 0, "BE": 0, "BI": 0}
 
 
-def run(domain):
-    traj_dir = os.path.join(ROOT, "trajectories", "browseruse_gpt4o_parsed", domain)
+BACKBONE_DIR_MAP = {
+    "gpt-4o": "browseruse_gpt4o_parsed",
+    "o3": "browseruse_o3_parsed",
+    "o4-mini": "browseruse_o4-mini_parsed",
+}
+
+
+def run(domain, backbone="gpt-4o"):
+    traj_subdir = BACKBONE_DIR_MAP.get(backbone, f"browseruse_{backbone}_parsed")
+    traj_dir = os.path.join(ROOT, "trajectories", traj_subdir, domain)
     persona_file = os.path.join(ROOT, "tasks", "less_sensitive", f"{domain}.json")
-    out_dir = os.path.join(ROOT, "results", domain)
+    # Per-backbone results directory so different backbones don't overwrite each other.
+    results_root = "results" if backbone == "gpt-4o" else f"results_{backbone}"
+    out_dir = os.path.join(ROOT, results_root, domain)
     os.makedirs(out_dir, exist_ok=True)
 
     if not os.path.isdir(traj_dir):
@@ -316,7 +326,7 @@ def run(domain):
             "method": "category_specific_aggregation_fixed",
             "framework": "browser-use",
             "domain": domain,
-            "agent_model": "gpt-4o",
+            "agent_model": backbone,
             "ce_be_method": "majority_vote",
             "ci_bi_method": "weighted_average",
             "fix_applied": "CI reclassified to CE if attribute explicitly mentioned",
@@ -339,8 +349,17 @@ def run(domain):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--domain", required=True, help="e.g. shopping_Amazon_email, shopping_ebay_generic")
+    p.add_argument(
+        "--backbone",
+        default="gpt-4o",
+        help=(
+            "Agent backbone whose trajectories to score. Must match a "
+            "trajectories/browseruse_<backbone>_parsed/ directory. "
+            "Default: gpt-4o."
+        ),
+    )
     args = p.parse_args()
-    run(args.domain)
+    run(args.domain, args.backbone)
 
 
 if __name__ == "__main__":
