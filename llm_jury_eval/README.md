@@ -191,38 +191,64 @@ in `oversharing-neurips/tables/`.
 ### Implicit oversharing for AutoGen (paper appendix C.3)
 
 The paper's Table 11 (Implicit Oversharing: Additional Models, o3 / o4-mini)
-ships with the Browser-Use rows only. To generate the AutoGen-equivalent
-implicit-oversharing rows for the same backbones — e.g. for a rebuttal
-appendix or a follow-up table — a collaborator with only the trajectories
-runs the standard jury, scoped to AutoGen, and reads the CI/BI columns out
-of `tables_filled_<backbone>.tex`:
+ships with the Browser-Use rows only — the AutoGen rows came out empty in
+the original collaborator run because the CI→CE reclassifier in
+`llm_jury_autogen.py` was matching DOM strings (eBay/Amazon filter labels
+in the rendered page) instead of just the agent's utterance, flipping every
+implicit flag to explicit and zeroing out the AutoGen implicit column. That's
+fixed now (see "Reclassification fix" above). To fill the missing AutoGen
+implicit rows, a collaborator with the trajectories shipped in this folder
+just runs the dedicated driver:
+
+```bash
+# Fills both o3 and o4-mini in one shot. Re-runs are safe (skips done configs).
+bash scripts/run_autogen_implicit.sh
+
+# Override knobs:
+BACKBONES="o3"     bash scripts/run_autogen_implicit.sh   # one backbone only
+MAX_PARALLEL=2     bash scripts/run_autogen_implicit.sh   # gentler on Anthropic rate limits
+```
+
+The driver does three things per backbone:
+1. Scores every (AutoGen, shopping domain) pair, writing
+   `results_autogen_<backbone>/<domain>/jury_results_fixed.json`. The CI/BI
+   totals in `totals.jury` are exactly what populates the Table 11 AutoGen
+   columns.
+2. Aggregates AutoGen + Browser-Use into `tables_filled_<backbone>.tex`.
+3. Renders the paper-ready LaTeX into `tables_filled_<backbone>_paper.tex`.
+
+If a collaborator wants the equivalent unrolled loop (for a one-domain
+sanity check or to mix with custom backbones):
 
 ```bash
 DOMAINS=(shopping_Amazon_chat shopping_Amazon_email shopping_Amazon_generic \
          shopping_ebay_chat   shopping_ebay_email   shopping_ebay_generic)
-
-# 1. Score every (domain, backbone) pair. Each call writes
-#    results_autogen_<backbone>/<domain>/jury_results_fixed.json
-#    which contains all four totals (CE/CI/BE/BI). The CI/BI numbers are
-#    what populate Table 11's AutoGen rows.
 for backbone in o3 o4-mini; do
   for d in "${DOMAINS[@]}"; do
     python scripts/llm_jury_autogen.py --domain "$d" --backbone "$backbone"
   done
-
-  # 2. Aggregate AutoGen + Browser-Use into one cell file. Table 3's AutoGen
-  #    columns now appear in the % Table 3 cells block (12 rows: AG and BU
-  #    interleaved per site).
   python scripts/aggregate_to_tables.py --backbone "$backbone"
-
-  # 3. Render to a paper-ready LaTeX table; the AutoGen implicit columns are
-  #    populated automatically as long as step 1 produced jury_results_fixed.json
-  #    files, otherwise they print `---`.
   python scripts/generate_jury_tables.py "tables_filled_${backbone}.tex" \
       --backbone "$backbone" \
       --output "../oversharing-neurips/tables/jury_${backbone}.tex"
 done
 ```
+
+#### Smoke-test before committing to the full run
+
+Before a collaborator burns ~$30 of Anthropic credit on the full
+`run_autogen_implicit.sh` run, verify the keys + plumbing on one config
+(~5 min, <$2):
+
+```bash
+python scripts/llm_jury_autogen.py --domain shopping_ebay_generic --backbone o4-mini
+python scripts/aggregate_to_tables.py --backbone o4-mini
+python scripts/generate_jury_tables.py tables_filled_o4-mini.tex --backbone o4-mini \
+    | grep -A2 'AutoGen.*generic'   # implicit AutoGen row should now show non-`---` numbers
+```
+
+If the AutoGen-generic line shows real CI/BI counts (not `---`), the toolchain
+is working end-to-end and the agent-utterance reclassification fix is in effect.
 
 Why this works for AutoGen now: the `explicit_mention()` reclassification check
 in `llm_jury_autogen.py` is scoped to the **agent utterance prefix** of each
