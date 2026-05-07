@@ -212,10 +212,16 @@ def generate_implicit_table(table2, table3, backbone):
     lines.append(r"\multicolumn{4}{c}{\textbf{AutoGen}} &")
     lines.append(r"\multicolumn{4}{c}{\textbf{Browser-Use}} \\")
     lines.append(r"\cmidrule(lr){3-6} \cmidrule(lr){7-10}")
-    lines.append(r" & & \multicolumn{2}{c}{\textbf{Behav.}} &")
-    lines.append(r"     \multicolumn{2}{c}{\textbf{Cont.}} &")
+    # NOTE: Implicit cells in tables_filled_<bb>.tex are emitted in the
+    # order (CI_occ, CI_rate, BI_occ, BI_rate) — i.e. CONTENT first, then
+    # BEHAVIORAL. Headers below match that order. (This is the opposite
+    # of the explicit table above, which emits behavioral first then
+    # content. The asymmetry is historical; fixing it requires changing
+    # aggregate_to_tables.py and regenerating every existing cell file.)
+    lines.append(r" & & \multicolumn{2}{c}{\textbf{Cont.}} &")
     lines.append(r"     \multicolumn{2}{c}{\textbf{Behav.}} &")
-    lines.append(r"     \multicolumn{2}{c}{\textbf{Cont.}} \\")
+    lines.append(r"     \multicolumn{2}{c}{\textbf{Cont.}} &")
+    lines.append(r"     \multicolumn{2}{c}{\textbf{Behav.}} \\")
     lines.append(r"\cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-10}")
     lines.append(r" & & Occ. & Rate & Occ. & Rate & Occ. & Rate & Occ. & Rate \\")
     lines.append(r"\midrule")
