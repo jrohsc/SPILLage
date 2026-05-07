@@ -191,22 +191,52 @@ in `oversharing-neurips/tables/`.
 ### Implicit oversharing for AutoGen (paper appendix C.3)
 
 The paper's Table 11 (Implicit Oversharing: Additional Models, o3 / o4-mini)
-ships with the Browser-Use rows only — the AutoGen rows came out empty in
-the original collaborator run because the CI→CE reclassifier in
-`llm_jury_autogen.py` was matching DOM strings (eBay/Amazon filter labels
-in the rendered page) instead of just the agent's utterance, flipping every
-implicit flag to explicit and zeroing out the AutoGen implicit column. That's
-fixed now (see "Reclassification fix" above).
+ships with the Browser-Use rows only. There are now three ways to fill the
+missing AutoGen rows, in increasing cost:
 
-**Why there is no "implicit-only" shortcut:** the 3-judge jury scores all
-four categories (CE/CI/BE/BI) in a single LLM call per (step, judge), and
-the implicit weighted-average uses each judge's reliability weight, which
-is itself derived from agreement on the explicit-category majority across
-all steps. So even though you only need the implicit AutoGen rows, you have
-to re-run the same jury. What the dedicated driver below does is scope the
-work as tightly as possible: only AutoGen (no Browser-Use), only configs
-that don't already have output, and only the implicit table in the final
-LaTeX.
+| Path | Cost | Wall clock | When to use |
+|---|---|---|---|
+| (1) Recompute from existing per-persona files | $0 | <30s/domain | Old `llm_jury_autogen.py` per-persona files still exist |
+| (2) Standalone implicit-only evaluator | ~$30 | ~3hr | Default — purpose-built for Table 11 |
+| (3) Full 4-category jury | ~$30 | ~3hr | Also want refreshed AutoGen explicit numbers |
+
+#### (2) Standalone implicit-only evaluator — `implicit_eval_autogen.py`
+
+The purpose-built evaluator. Same 3 judges as paper Table 11
+(gpt-4.1-mini + Claude Opus 4.5 + DeepSeek), but the prompt asks the
+judges to flag *only* implicit categories (`indirect_content` →
+CI, `indirect_behavioral` → BI). Output JSON sets CE/BE to 0 by
+construction and the aggregator (`aggregate_to_tables.py`) renders those
+cells as `---` in Table 2 so the implicit-only run doesn't poison the
+explicit table. Same reclassification fix from `llm_jury_autogen.py`
+applies: if the agent itself typed/said an irrelevant attribute (in the
+prefix before the rendered DOM), the model's CI flag is dropped — that's
+not implicit, it's explicit.
+
+```bash
+# Single (domain, backbone) — useful for sanity-checking before the full run
+python scripts/implicit_eval_autogen.py --domain shopping_ebay_generic --backbone o3
+
+# Reuse judge weights from a prior 4-category jury run on the same backbone
+# so Table 11 is weighted the same way as Table 2 (default: uniform 1/3 each)
+python scripts/implicit_eval_autogen.py --domain shopping_ebay_generic --backbone o3 \
+    --weights-from results_autogen_o3/shopping_ebay_generic/jury_results_fixed.json
+
+# Full sweep (6 domains x 2 backbones, ~3hr, ~$30)
+bash scripts/run_autogen_implicit.sh
+```
+
+`run_autogen_implicit.sh` defaults to `implicit_eval_autogen.py`; set
+`USE_FULL_JURY=1` to run `llm_jury_autogen.py` instead.
+
+#### (3) Full 4-category jury — `llm_jury_autogen.py`
+
+If you also want refreshed AutoGen *explicit* numbers (Table 2) as a side
+effect, or if you specifically want the implicit weighted-average to use
+reliability weights derived from explicit-majority agreement (instead of
+uniform 1/3), use the 4-category script. Same per-call API cost as path
+(2) — the difference is which prompt the judges see and which categories
+appear in the output JSON.
 
 **Free path if the previous run's per-persona files still exist:** the old
 jury output preserves each judge's full ``response`` text per step, and the

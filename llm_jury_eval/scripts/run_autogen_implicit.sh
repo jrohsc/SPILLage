@@ -14,19 +14,23 @@
 # skipped on the second pass.
 #
 # Usage:
-#   bash scripts/run_autogen_implicit.sh                  # both o3 and o4-mini
-#   BACKBONES="o3"  bash scripts/run_autogen_implicit.sh  # just o3
-#   MAX_PARALLEL=2  bash scripts/run_autogen_implicit.sh  # gentler on Anthropic rate limits
-#   EMIT_BOTH=1     bash scripts/run_autogen_implicit.sh  # also re-emit Table 2 explicit
+#   bash scripts/run_autogen_implicit.sh                  # both o3 and o4-mini, implicit-only judge
+#   BACKBONES="o3"   bash scripts/run_autogen_implicit.sh # just o3
+#   MAX_PARALLEL=2   bash scripts/run_autogen_implicit.sh # gentler on Anthropic rate limits
+#   EMIT_BOTH=1      bash scripts/run_autogen_implicit.sh # also emit Table 2 explicit (only useful if USE_FULL_JURY=1)
+#   USE_FULL_JURY=1  bash scripts/run_autogen_implicit.sh # use 4-category llm_jury_autogen.py instead
 #
-# Important methodology note:
-#   The 3-judge jury scores all four oversharing categories (CE/CI/BE/BI) in
-#   a SINGLE LLM call per (step, judge), and the implicit aggregation needs
-#   the explicit votes to derive each judge's reliability weight. So even
-#   though only the implicit AutoGen rows are missing from the paper, the
-#   only way to fill them is to re-run the same jury — there is no cheaper
-#   "implicit-only" code path. By default this script emits only the
-#   Implicit table LaTeX (the rows you actually need to paste into Table 11).
+# Default judging script:
+#   scripts/implicit_eval_autogen.py — 3-judge ensemble with an
+#   implicit-focused prompt (only flags CI/BI, not CE/BE). This is the
+#   purpose-built evaluator for filling Table 11's AutoGen rows.
+#
+# Set USE_FULL_JURY=1 to fall back to scripts/llm_jury_autogen.py instead
+# (4-category prompt). Use this if you want to also refresh the AutoGen
+# explicit numbers as a side effect, or if you specifically want the
+# explicit-majority-derived reliability weights for the implicit
+# aggregation. Same per-call cost; the difference is which prompt the
+# judges see and which categories appear in the output JSON.
 #
 # Prereq: scripts/.. (i.e. llm_jury_eval/) has a populated .env (see README §Setup)
 # and the AutoGen trajectories under trajectories/autogen_<backbone>_processed/.
@@ -50,12 +54,20 @@ DOMAINS=(
   shopping_ebay_generic
 )
 
+if [[ "${USE_FULL_JURY:-0}" == "1" ]]; then
+  EVAL_SCRIPT="scripts/llm_jury_autogen.py"
+else
+  EVAL_SCRIPT="scripts/implicit_eval_autogen.py"
+fi
+echo "Evaluator: $EVAL_SCRIPT"
+echo
+
 run_one() {
   local backbone="$1"
   local domain="$2"
   local log="logs/autogen_${backbone}_${domain}.log"
   echo "[$(date +%H:%M:%S)] start: autogen $domain ($backbone)"
-  python3 scripts/llm_jury_autogen.py --domain "$domain" --backbone "$backbone" >"$log" 2>&1
+  python3 "$EVAL_SCRIPT" --domain "$domain" --backbone "$backbone" >"$log" 2>&1
   local rc=$?
   if [[ $rc -eq 0 ]]; then
     echo "[$(date +%H:%M:%S)] DONE : autogen $domain ($backbone)"

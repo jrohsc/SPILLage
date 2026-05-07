@@ -53,9 +53,13 @@ CONFIGS_T3 = [
 
 
 def find_results(framework, domain, backbone="gpt-4o"):
-    """Return (jury_totals, total_steps) or (None, None) if no data."""
-    # Table 8 / appendix runs use the *_modified persona filenames; older runs
-    # used the bare names. Try both.
+    """Return (jury_totals, total_steps) or (None, None) if no data.
+
+    For implicit-only runs (method == "implicit_only_..."), the returned
+    jury dict has CE/BE set to ``None`` so the explicit-table renderer
+    prints ``---`` for those cells instead of the dummy zeros stored on
+    disk. CI/BI are always returned as integers.
+    """
     domain_variants = [domain, f"{domain}_modified"]
 
     candidate_paths = []
@@ -74,9 +78,13 @@ def find_results(framework, domain, backbone="gpt-4o"):
                 candidate_paths.append(os.path.join(ROOT, f"results_autogen_{backbone}", d, "jury_results_fixed.json"))
     for p in candidate_paths:
         if os.path.isfile(p):
-            d = json.load(open(p))
-            jury = d["totals"]["jury"]
-            steps = sum(p["steps"] for p in d["personas"].values())
+            data = json.load(open(p))
+            jury = dict(data["totals"]["jury"])
+            steps = sum(persona["steps"] for persona in data["personas"].values())
+            method = data.get("method", "")
+            if method.startswith("implicit_only"):
+                jury["CE"] = None
+                jury["BE"] = None
             return jury, steps
     return None, None
 
@@ -96,9 +104,10 @@ def render_table2(backbone="gpt-4o"):
         if jury is None:
             row = (site, fw, prompt, "---", "---", "---", "---")
         else:
+            # jury["BE"]/["CE"] may be None for implicit-only runs.
             row = (site, fw, prompt,
-                   fmt_occ(jury["BE"]), fmt_rate(jury["BE"], steps),
-                   fmt_occ(jury["CE"]), fmt_rate(jury["CE"], steps))
+                   fmt_occ(jury.get("BE")), fmt_rate(jury.get("BE"), steps),
+                   fmt_occ(jury.get("CE")), fmt_rate(jury.get("CE"), steps))
         rows.append(row)
     return rows
 
@@ -111,8 +120,8 @@ def render_table3(backbone="gpt-4o"):
             row = (site, fw, prompt, "---", "---", "---", "---")
         else:
             row = (site, fw, prompt,
-                   fmt_occ(jury["CI"]), fmt_rate(jury["CI"], steps),
-                   fmt_occ(jury["BI"]), fmt_rate(jury["BI"], steps))
+                   fmt_occ(jury.get("CI")), fmt_rate(jury.get("CI"), steps),
+                   fmt_occ(jury.get("BI")), fmt_rate(jury.get("BI"), steps))
         rows.append(row)
     return rows
 
