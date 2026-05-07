@@ -12,6 +12,7 @@ llm_jury_eval/
 │   ├── llm_jury_browseruse.py     # one config of Browser-Use trajectories
 │   ├── llm_jury_autogen.py        # one config of AutoGen trajectories
 │   ├── aggregate_to_tables.py     # builds Tables 2 & 3 from per-config jury outputs
+│   ├── generate_jury_tables.py    # converts aggregator cell files into camera-ready LaTeX tables
 │   └── run_all_missing.sh         # runs every config that doesn't already have a result
 ├── trajectories/
 │   ├── browseruse_gpt4o_parsed/    # Browser-Use, gpt-4o   (6 configs × 30 personas)
@@ -106,6 +107,49 @@ from:
 
 Cells without data print as `---`.
 
+### Convert cell files to camera-ready LaTeX (`generate_jury_tables.py`)
+
+`aggregate_to_tables.py` emits raw cell numbers grouped under
+`% Table 2 cells` / `% Table 3 cells` comment blocks. `generate_jury_tables.py`
+takes that file and emits the two final, paper-ready `\begin{table}` blocks
+(Table 2 = Explicit, Table 3 = Implicit) with proper `\multirow`,
+`\cmidrule`, `\caption`, and `\label` lines, plus a per-website **Total** row
+whose rate is recovered from `occurrence / steps` so it stays consistent with
+the per-prompt rows.
+
+```bash
+# After aggregate_to_tables.py has produced tables_filled_<backbone>.tex:
+python scripts/generate_jury_tables.py tables_filled_o3.tex      --backbone o3
+python scripts/generate_jury_tables.py tables_filled_gpt4o.tex   --backbone gpt-4o
+python scripts/generate_jury_tables.py tables_filled_sonnet.tex  --backbone claude-sonnet-4
+
+# Write to a file instead of stdout:
+python scripts/generate_jury_tables.py tables_filled_o3.tex \
+    --backbone o3 \
+    --output ../oversharing-neurips/tables/jury_o3.tex
+```
+
+Arguments:
+- `input` (positional): the `tables_filled_<backbone>.tex` produced by
+  `aggregate_to_tables.py`.
+- `--backbone, -b` (required): the backbone label that goes into the caption
+  and the `\label{tab:..._<backbone>}` slug. Hyphens, dots, and spaces are
+  stripped from the label slug only.
+- `--output, -o` (optional): destination file. If omitted, the assembled
+  LaTeX is printed to stdout.
+
+Output is always two tables concatenated, in this order:
+
+1. `\label{tab:explicit_oversharing_jury_<backbone>}` — Table 2 (CE/BE,
+   AutoGen + Browser-Use, Amazon and eBay).
+2. `\label{tab:implicit_oversharing_jury_<backbone>}` — Table 3 (CI/BI,
+   Browser-Use only; the AutoGen columns intentionally print `---` because the
+   per-step jury produces no implicit signal for AutoGen — see the discussion
+   of the `reclassify` step text in `llm_jury_autogen.py`).
+
+Cells missing from the input cell file render as `---` so a partially-run
+backbone still produces a compilable table.
+
 #### Workflow for the appendix C tables (o3, o4-mini)
 
 The trajectories for both backbones are already shipped in
@@ -123,6 +167,9 @@ for backbone in o3 o4-mini; do
     python scripts/llm_jury_autogen.py    --domain "$d" --backbone "$backbone"
   done
   python scripts/aggregate_to_tables.py --backbone "$backbone"
+  python scripts/generate_jury_tables.py "tables_filled_${backbone}.tex" \
+      --backbone "$backbone" \
+      --output "../oversharing-neurips/tables/jury_${backbone}.tex"
 done
 ```
 
