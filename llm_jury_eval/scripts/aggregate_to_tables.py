@@ -37,12 +37,18 @@ CONFIGS_T2 = [
 ]
 
 CONFIGS_T3 = [
-    ("Amazon", "chat",    "browseruse", "shopping_Amazon_chat"),
-    ("Amazon", "email",   "browseruse", "shopping_Amazon_email"),
-    ("Amazon", "generic", "browseruse", "shopping_Amazon_generic"),
-    ("eBay",   "chat",    "browseruse", "shopping_ebay_chat"),
-    ("eBay",   "email",   "browseruse", "shopping_ebay_email"),
-    ("eBay",   "generic", "browseruse", "shopping_ebay_generic"),
+    ("Amazon", "AutoGen",     "chat",    "autogen",    "shopping_Amazon_chat"),
+    ("Amazon", "AutoGen",     "email",   "autogen",    "shopping_Amazon_email"),
+    ("Amazon", "AutoGen",     "generic", "autogen",    "shopping_Amazon_generic"),
+    ("Amazon", "Browser-Use", "chat",    "browseruse", "shopping_Amazon_chat"),
+    ("Amazon", "Browser-Use", "email",   "browseruse", "shopping_Amazon_email"),
+    ("Amazon", "Browser-Use", "generic", "browseruse", "shopping_Amazon_generic"),
+    ("eBay",   "AutoGen",     "chat",    "autogen",    "shopping_ebay_chat"),
+    ("eBay",   "AutoGen",     "email",   "autogen",    "shopping_ebay_email"),
+    ("eBay",   "AutoGen",     "generic", "autogen",    "shopping_ebay_generic"),
+    ("eBay",   "Browser-Use", "chat",    "browseruse", "shopping_ebay_chat"),
+    ("eBay",   "Browser-Use", "email",   "browseruse", "shopping_ebay_email"),
+    ("eBay",   "Browser-Use", "generic", "browseruse", "shopping_ebay_generic"),
 ]
 
 
@@ -99,12 +105,12 @@ def render_table2(backbone="gpt-4o"):
 
 def render_table3(backbone="gpt-4o"):
     rows = []
-    for site, prompt, fw_key, domain in CONFIGS_T3:
+    for site, fw, prompt, fw_key, domain in CONFIGS_T3:
         jury, steps = find_results(fw_key, domain, backbone)
         if jury is None:
-            row = (site, prompt, "---", "---", "---", "---")
+            row = (site, fw, prompt, "---", "---", "---", "---")
         else:
-            row = (site, prompt,
+            row = (site, fw, prompt,
                    fmt_occ(jury["CI"]), fmt_rate(jury["CI"], steps),
                    fmt_occ(jury["BI"]), fmt_rate(jury["BI"], steps))
         rows.append(row)
@@ -121,9 +127,9 @@ def write_md(t2, t3, path):
     for r in t2:
         lines.append("| " + " | ".join(r) + " |")
     lines.append("")
-    lines.append("## Table 3 — Implicit oversharing (Browser-Use, gpt-4o)\n")
-    lines.append("| Site | Prompt | Implicit Content Occ. | Rate | Implicit Behavioral Occ. | Rate |")
-    lines.append("|---|---|---|---|---|---|")
+    lines.append("## Table 3 — Implicit oversharing (gpt-4o)\n")
+    lines.append("| Site | Framework | Prompt | Implicit Content Occ. | Rate | Implicit Behavioral Occ. | Rate |")
+    lines.append("|---|---|---|---|---|---|---|")
     for r in t3:
         lines.append("| " + " | ".join(r) + " |")
     lines.append("")
@@ -140,11 +146,11 @@ def write_tex(t2, t3, path):
         lines.append(f"% {site} {fw} {prompt}")
         lines.append(f"  & \\texttt{{{prompt}}} & {be_occ} & {be_rate} & {ce_occ} & {ce_rate} \\\\")
     lines.append("")
-    lines.append("% --- Table 3 cells (6 rows: Amazon/eBay x chat/email/generic) ---")
+    lines.append("% --- Table 3 cells (12 rows, in order: Amazon AG/BU x chat/email/generic, eBay AG/BU x chat/email/generic) ---")
     for r in t3:
-        site, prompt, ci_occ, ci_rate, bi_occ, bi_rate = r
-        lines.append(f"% {site} {prompt}")
-        lines.append(f"\\texttt{{{prompt}}} & {ci_occ} & {ci_rate} & {bi_occ} & {bi_rate} \\\\")
+        site, fw, prompt, ci_occ, ci_rate, bi_occ, bi_rate = r
+        lines.append(f"% {site} {fw} {prompt}")
+        lines.append(f"  & \\texttt{{{prompt}}} & {ci_occ} & {ci_rate} & {bi_occ} & {bi_rate} \\\\")
     with open(path, "w") as f:
         f.write("\n".join(lines))
 
@@ -186,11 +192,11 @@ def main():
         print(f"{r[0]:<8} {r[1]:<12} {r[2]:<8} {r[3]:<8} {r[4]:<8} {r[5]:<8} {r[6]:<8}")
     print()
     print("=" * 70)
-    print(f"{label} — Implicit oversharing (Browser-Use)")
+    print(f"{label} — Implicit oversharing")
     print("=" * 70)
-    print(f"{'Site':<8} {'Prompt':<8} {'CI Occ':<8} {'Rate':<8} {'BI Occ':<8} {'Rate':<8}")
+    print(f"{'Site':<8} {'Framework':<12} {'Prompt':<8} {'CI Occ':<8} {'Rate':<8} {'BI Occ':<8} {'Rate':<8}")
     for r in t3:
-        print(f"{r[0]:<8} {r[1]:<8} {r[2]:<8} {r[3]:<8} {r[4]:<8} {r[5]:<8}")
+        print(f"{r[0]:<8} {r[1]:<12} {r[2]:<8} {r[3]:<8} {r[4]:<8} {r[5]:<8} {r[6]:<8}")
     print()
     print(f"Wrote: {md_path}")
     print(f"Wrote: {tex_path}")

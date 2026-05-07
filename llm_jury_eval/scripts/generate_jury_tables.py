@@ -20,7 +20,7 @@ def parse_cells(filepath):
         lines = f.readlines()
 
     table2 = {}  # (website, framework, prompt) -> (behav_occ, behav_rate, cont_occ, cont_rate)
-    table3 = {}  # (website, prompt) -> (behav_occ, behav_rate, cont_occ, cont_rate)
+    table3 = {}  # (website, framework, prompt) -> (cont_occ, cont_rate, behav_occ, behav_rate)
 
     current_section = None
     current_key = None
@@ -47,12 +47,16 @@ def parse_cells(filepath):
                     prompt = parts[2]
                     current_key = (website, framework, prompt)
             elif current_section == "table3":
-                # e.g. "Amazon chat" or "eBay generic"
+                # New format: "Amazon AutoGen chat" / "eBay Browser-Use email".
+                # Legacy format (pre-AutoGen-implicit fix): "Amazon chat" /
+                # "eBay generic" — implicitly Browser-Use only.
                 parts = comment.split()
-                if len(parts) >= 2:
-                    website = parts[0]
-                    prompt = parts[1]
-                    current_key = (website, prompt)
+                if len(parts) >= 3:
+                    website, framework, prompt = parts[0], parts[1], parts[2]
+                    current_key = (website, framework, prompt)
+                elif len(parts) == 2:
+                    website, prompt = parts[0], parts[1]
+                    current_key = (website, "Browser-Use", prompt)
             continue
 
         # Parse data lines
@@ -219,11 +223,18 @@ def generate_implicit_table(table2, table3, backbone):
     for i, website in enumerate(websites):
         lines.append(r"\multirow{4}{*}{" + website + "}")
 
+        ag_rows = []
         bu_rows = []
 
         for prompt in prompts:
-            bu_key = (website, prompt)
-            bu = table3.get(bu_key)
+            ag = table3.get((website, "AutoGen", prompt))
+            bu = table3.get((website, "Browser-Use", prompt))
+
+            if ag:
+                ag_rows.append(ag)
+                ag_str = f"  {ag[0]} & {fmt_rate(ag[1])} & {ag[2]} & {fmt_rate(ag[3])}"
+            else:
+                ag_str = "--- & --- & --- & ---"
 
             if bu:
                 bu_rows.append(bu)
@@ -231,10 +242,17 @@ def generate_implicit_table(table2, table3, backbone):
             else:
                 bu_str = "--- & --- & --- & ---"
 
-            lines.append(f"  & \\texttt{{{prompt}}} & --- & --- & --- & --- & {bu_str} \\\\")
+            lines.append(f"  & \\texttt{{{prompt}}} & {ag_str} & {bu_str} \\\\")
 
         # Total row
         lines.append(r"  \cmidrule{2-10}")
+        if ag_rows:
+            ag_tot = compute_totals(ag_rows)
+            ag_tot_str = (f"\\textbf{{{ag_tot[0]}}} & \\textbf{{{fmt_rate(ag_tot[1])}}} & "
+                          f"\\textbf{{{ag_tot[2]}}} & \\textbf{{{fmt_rate(ag_tot[3])}}}")
+        else:
+            ag_tot_str = "--- & --- & --- & ---"
+
         if bu_rows:
             bu_tot = compute_totals(bu_rows)
             bu_tot_str = (f"\\textbf{{{bu_tot[0]}}} & \\textbf{{{fmt_rate(bu_tot[1])}}} & "
@@ -242,7 +260,7 @@ def generate_implicit_table(table2, table3, backbone):
         else:
             bu_tot_str = "--- & --- & --- & ---"
 
-        lines.append(f"  & \\textit{{Total}} & --- & --- & --- & --- & {bu_tot_str} \\\\")
+        lines.append(f"  & \\textit{{Total}} & {ag_tot_str} & {bu_tot_str} \\\\")
 
         if i < len(websites) - 1:
             lines.append(r"\midrule")
