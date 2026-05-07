@@ -208,6 +208,37 @@ work as tightly as possible: only AutoGen (no Browser-Use), only configs
 that don't already have output, and only the implicit table in the final
 LaTeX.
 
+**Free path if the previous run's per-persona files still exist:** the old
+jury output preserves each judge's full ``response`` text per step, and the
+only thing that changed in this fix is the post-hoc ``reclassify`` step
+(now scoped to the agent-utterance prefix). So if your collaborator still
+has the per-persona ``<Name>.json`` files from a prior
+``llm_jury_autogen.py`` run (i.e. before the fix landed), you can recover
+the implicit numbers without burning a single API token:
+
+```bash
+# Per (domain, backbone) — point --input-dir at the directory containing
+# the prior run's per-persona JSON files. Output lands in the same
+# results_autogen_<backbone>/<domain>/jury_results_fixed.json that
+# aggregate_to_tables.py / generate_jury_tables.py read from.
+python scripts/recompute_implicit_from_existing.py \
+    --input-dir /path/to/old/results_autogen_o3/shopping_ebay_generic \
+    --domain shopping_ebay_generic \
+    --backbone o3
+
+# Then aggregate + render exactly like the API-calling path:
+python scripts/aggregate_to_tables.py --backbone o3
+python scripts/generate_jury_tables.py tables_filled_o3.tex \
+    --backbone o3 --only implicit \
+    --output tables_filled_o3_implicit.tex
+```
+
+This is byte-for-byte equivalent to re-running ``llm_jury_autogen.py``
+for AutoGen (the only thing that changed is which substring of the step
+blob ``explicit_mention`` looks at, and we have the raw blob + raw judge
+responses). Cost: $0. Wall-clock: <30s per domain. If the old per-persona
+files are gone, fall back to ``run_autogen_implicit.sh`` below.
+
 ```bash
 # Fills both o3 and o4-mini in one shot. Re-runs are safe (skips done configs).
 # Default output: tables_filled_<backbone>_implicit.tex (just the Table 11 block).
