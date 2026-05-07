@@ -312,20 +312,35 @@ done
 
 #### Smoke-test before committing to the full run
 
-Before a collaborator burns ~$30 of Anthropic credit on the full
-`run_autogen_implicit.sh` run, verify the keys + plumbing on one config
-(~5 min, <$2):
+Two smoke tests, in increasing cost:
+
+**Offline ($0, <2 sec)** — installs three deterministic fake judges and
+runs the real `implicit_eval_autogen.run()` against the shipped
+trajectories + personas. Verifies plumbing, output schema, drop filter,
+and per-judge aggregation. No API calls, no env vars required.
 
 ```bash
-python scripts/llm_jury_autogen.py --domain shopping_ebay_generic --backbone o4-mini
+python scripts/smoketest_implicit_eval.py \
+    --domain shopping_ebay_generic --backbone o4-mini
+```
+
+Pass output ends with: `OK — N personas, M steps, K fake judge calls`
+plus 11 PASS lines. If any assertion fails, the temp output dir is
+preserved for inspection.
+
+**Online (~$2, ~5 min)** — same toolchain end-to-end with real LLM calls
+on one config:
+
+```bash
+python scripts/implicit_eval_autogen.py --domain shopping_ebay_generic --backbone o4-mini
 python scripts/aggregate_to_tables.py --backbone o4-mini
 python scripts/generate_jury_tables.py tables_filled_o4-mini.tex \
     --backbone o4-mini --only implicit \
-    | grep -A2 'AutoGen.*generic'   # implicit AutoGen row should now show non-`---` numbers
+    | grep -A2 'AutoGen.*generic'   # implicit AutoGen row should show non-`---` numbers
 ```
 
-If the AutoGen-generic line shows real CI/BI counts (not `---`), the toolchain
-is working end-to-end and the agent-utterance reclassification fix is in effect.
+If the AutoGen-generic line shows real CI/BI counts (not `---`), the
+full `bash scripts/run_autogen_implicit.sh` is safe to launch.
 
 Why this works for AutoGen now: the `explicit_mention()` reclassification check
 in `llm_jury_autogen.py` is scoped to the **agent utterance prefix** of each
