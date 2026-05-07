@@ -4,16 +4,51 @@ Self-contained pipeline to score the existing agent trajectories with a 3-judge
 LLM-Jury (gpt-4.1-mini, Claude-Opus-4.5, DeepSeek) and produce the cells for
 Tables 2 and 3 of the paper.
 
+---
+
+## TL;DR — Fill the missing AutoGen implicit rows in Table 11
+
+Most collaborators arrive at this repo to fill the AutoGen rows of paper
+Table 11 (Implicit Oversharing: Additional Models). One backbone, one
+command:
+
+```bash
+# 1. Setup (once): see "Setup" section below
+cd llm_jury_eval && cp .env.example .env  # then edit .env with API keys
+pip install -r requirements.txt
+
+# 2. Free $0 sanity check that plumbing works (<2 sec, no API calls):
+python scripts/smoketest_implicit_eval.py --domain shopping_ebay_generic --backbone o3
+
+# 3. Fill all 6 AutoGen implicit cells for one backbone (~$15, ~1.5 hr):
+bash scripts/run_autogen_implicit.sh o3
+
+# 4. Fill both o3 and o4-mini in one shot (~$30, ~3 hr):
+bash scripts/run_autogen_implicit.sh o3 o4-mini
+```
+
+Output: `tables_filled_<backbone>_implicit.tex` (paste-ready LaTeX block
+with the AutoGen rows) plus per-domain `results_autogen_<backbone>/<domain>/jury_results_fixed.json`.
+
+For more detail on what's happening and what the alternatives are, see
+[Implicit oversharing for AutoGen](#implicit-oversharing-for-autogen-paper-appendix-c3) below.
+
+---
+
 ## What's in this folder
 
 ```
 llm_jury_eval/
 ├── scripts/
-│   ├── llm_jury_browseruse.py     # one config of Browser-Use trajectories
-│   ├── llm_jury_autogen.py        # one config of AutoGen trajectories
-│   ├── aggregate_to_tables.py     # builds Tables 2 & 3 from per-config jury outputs
-│   ├── generate_jury_tables.py    # converts aggregator cell files into camera-ready LaTeX tables
-│   └── run_all_missing.sh         # runs every config that doesn't already have a result
+│   ├── llm_jury_browseruse.py             # one config of Browser-Use trajectories (4-cat jury)
+│   ├── llm_jury_autogen.py                # one config of AutoGen trajectories (4-cat jury)
+│   ├── implicit_eval_autogen.py           # implicit-only 3-judge eval for AutoGen (Table 11 fill-in)
+│   ├── recompute_implicit_from_existing.py # $0 fix-up of prior jury runs (no API calls)
+│   ├── aggregate_to_tables.py             # builds Tables 2 & 3 from per-config jury outputs
+│   ├── generate_jury_tables.py            # cell files -> camera-ready LaTeX (use --only implicit for Table 11)
+│   ├── run_autogen_implicit.sh            # ONE command driver: backbone arg, auto-borrow weights, skips done configs
+│   ├── run_all_missing.sh                 # gpt-4o sweep of every Table 2/3 config (legacy)
+│   └── smoketest_implicit_eval.py         # offline ($0) end-to-end test of implicit_eval_autogen
 ├── trajectories/
 │   ├── browseruse_gpt4o_parsed/    # Browser-Use, gpt-4o   (6 configs × 30 personas)
 │   ├── browseruse_o3_parsed/       # Browser-Use, o3       (6 configs)
@@ -191,66 +226,54 @@ in `oversharing-neurips/tables/`.
 ### Implicit oversharing for AutoGen (paper appendix C.3)
 
 The paper's Table 11 (Implicit Oversharing: Additional Models, o3 / o4-mini)
-ships with the Browser-Use rows only. There are now three ways to fill the
-missing AutoGen rows, in increasing cost:
+ships with the Browser-Use rows only. Three ways to fill the missing AutoGen
+rows, ordered by cost:
 
 | Path | Cost | Wall clock | When to use |
 |---|---|---|---|
-| (1) Recompute from existing per-persona files | $0 | <30s/domain | Old `llm_jury_autogen.py` per-persona files still exist |
-| (2) Standalone implicit-only evaluator | ~$30 | ~3hr | Default — purpose-built for Table 11 |
-| (3) Full 4-category jury | ~$30 | ~3hr | Also want refreshed AutoGen explicit numbers |
+| (1) Recompute from existing per-persona files | $0 | <30s/domain | Old 4-cat per-persona files still exist on disk |
+| (2) `run_autogen_implicit.sh` (recommended) | ~$15/backbone | ~1.5hr/backbone | Default — calls `implicit_eval_autogen.py` |
+| (3) `USE_FULL_JURY=1 run_autogen_implicit.sh` | ~$15/backbone | ~1.5hr/backbone | Also want refreshed AutoGen Table 2 cells |
 
-#### (2) Standalone implicit-only evaluator — `implicit_eval_autogen.py`
-
-The purpose-built evaluator. Same 3 judges as paper Table 11
-(gpt-4.1-mini + Claude Opus 4.5 + DeepSeek), but the prompt asks the
-judges to flag *only* implicit categories (`indirect_content` →
-CI, `indirect_behavioral` → BI). Output JSON sets CE/BE to 0 by
-construction and the aggregator (`aggregate_to_tables.py`) renders those
-cells as `---` in Table 2 so the implicit-only run doesn't poison the
-explicit table. Same reclassification fix from `llm_jury_autogen.py`
-applies: if the agent itself typed/said an irrelevant attribute (in the
-prefix before the rendered DOM), the model's CI flag is dropped — that's
-not implicit, it's explicit.
+#### (2) Recommended path — `run_autogen_implicit.sh` (one command)
 
 ```bash
-# Single (domain, backbone) — useful for sanity-checking before the full run
-python scripts/implicit_eval_autogen.py --domain shopping_ebay_generic --backbone o3
+bash scripts/run_autogen_implicit.sh o3                # one backbone
+bash scripts/run_autogen_implicit.sh o3 o4-mini        # multiple
+bash scripts/run_autogen_implicit.sh                   # default: o3 + o4-mini
 
-# Reuse judge weights from a prior 4-category jury run on the same backbone
-# so Table 11 is weighted the same way as Table 2 (default: uniform 1/3 each)
-python scripts/implicit_eval_autogen.py --domain shopping_ebay_generic --backbone o3 \
-    --weights-from results_autogen_o3/shopping_ebay_generic/jury_results_fixed.json
-
-# Full sweep (6 domains x 2 backbones, ~3hr, ~$30)
-bash scripts/run_autogen_implicit.sh
+# Knobs:
+MAX_PARALLEL=2   bash scripts/run_autogen_implicit.sh o3   # gentler on Anthropic rate limits
+EMIT_BOTH=1      bash scripts/run_autogen_implicit.sh o3   # also emit Table 2 explicit (only useful with USE_FULL_JURY=1)
+USE_FULL_JURY=1  bash scripts/run_autogen_implicit.sh o3   # path (3) below
 ```
 
-`run_autogen_implicit.sh` defaults to `implicit_eval_autogen.py`; set
-`USE_FULL_JURY=1` to run `llm_jury_autogen.py` instead.
+What the runner does, per backbone:
 
-#### (3) Full 4-category jury — `llm_jury_autogen.py`
+1. **Per-config classification** of any existing `results_autogen_<bb>/<domain>/jury_results_fixed.json`:
+   - `implicit_only` → skip (already done what we want)
+   - `4cat` (from a prior `llm_jury_autogen.py` run) → back up to `jury_results_fixed_4cat.json` (so the explicit numbers are not lost) **and** pass it as `--weights-from` to the implicit eval, so the CI/BI weighted-average uses the same reliability weights as the existing explicit run instead of uniform 1/3
+   - `missing` → run with uniform 1/3 weights
+2. Bounded-parallel calls to `implicit_eval_autogen.py` (3 judges, implicit-only prompt). Logs to `logs/autogen_<bb>_<domain>.log`.
+3. `aggregate_to_tables.py --backbone <bb>` → `tables_filled_<bb>.tex` (the cell-level file).
+4. `generate_jury_tables.py tables_filled_<bb>.tex --backbone <bb> --only implicit --output tables_filled_<bb>_implicit.tex` → the paper-ready Table 11 LaTeX block (just the implicit table, ready to paste).
 
-If you also want refreshed AutoGen *explicit* numbers (Table 2) as a side
-effect, or if you specifically want the implicit weighted-average to use
-reliability weights derived from explicit-majority agreement (instead of
-uniform 1/3), use the 4-category script. Same per-call API cost as path
-(2) — the difference is which prompt the judges see and which categories
-appear in the output JSON.
+Re-runs are safe — completed configs are skipped on the second pass.
 
-**Free path if the previous run's per-persona files still exist:** the old
-jury output preserves each judge's full ``response`` text per step, and the
-only thing that changed in this fix is the post-hoc ``reclassify`` step
-(now scoped to the agent-utterance prefix). So if your collaborator still
-has the per-persona ``<Name>.json`` files from a prior
-``llm_jury_autogen.py`` run (i.e. before the fix landed), you can recover
-the implicit numbers without burning a single API token:
+Behind the scenes, `implicit_eval_autogen.py`:
+- Same 3 judges as paper Table 11 (gpt-4.1-mini + Claude Opus 4.5 + DeepSeek)
+- Prompt asks judges to flag *only* implicit categories (`indirect_content` → CI, `indirect_behavioral` → BI)
+- Sets CE/BE = 0 by construction; `aggregate_to_tables.py` detects this method tag and renders those cells as `---` in Table 2 so the implicit-only run doesn't poison the explicit table
+- Drops a CI flag if the agent's own utterance (prefix before the DOM marker) contains the irrelevant attribute verbatim — that case belongs in Table 2 (explicit), not Table 11
+
+#### (1) Free path — recompute from existing per-persona files ($0, <30s/domain)
+
+If the collaborator still has the per-persona `<Name>.json` files from a
+prior `llm_jury_autogen.py` run (the ones that contain each judge's full
+`response` text for every step), the implicit fix can be applied without
+any new LLM calls:
 
 ```bash
-# Per (domain, backbone) — point --input-dir at the directory containing
-# the prior run's per-persona JSON files. Output lands in the same
-# results_autogen_<backbone>/<domain>/jury_results_fixed.json that
-# aggregate_to_tables.py / generate_jury_tables.py read from.
 python scripts/recompute_implicit_from_existing.py \
     --input-dir /path/to/old/results_autogen_o3/shopping_ebay_generic \
     --domain shopping_ebay_generic \
@@ -263,69 +286,24 @@ python scripts/generate_jury_tables.py tables_filled_o3.tex \
     --output tables_filled_o3_implicit.tex
 ```
 
-This is byte-for-byte equivalent to re-running ``llm_jury_autogen.py``
-for AutoGen (the only thing that changed is which substring of the step
-blob ``explicit_mention`` looks at, and we have the raw blob + raw judge
-responses). Cost: $0. Wall-clock: <30s per domain. If the old per-persona
-files are gone, fall back to ``run_autogen_implicit.sh`` below.
+For AutoGen this is byte-for-byte equivalent to re-running
+`llm_jury_autogen.py` (the only thing that changed in the fix is which
+substring of the step blob `explicit_mention` looks at; the raw blob and
+the raw judge responses are already on disk). If those old files are
+gone, fall back to path (2).
+
+#### (3) Full 4-category jury (also refreshes Table 2 cells)
 
 ```bash
-# One backbone (positional arg):
-bash scripts/run_autogen_implicit.sh o3
-bash scripts/run_autogen_implicit.sh o4-mini
-
-# Multiple backbones in one run:
-bash scripts/run_autogen_implicit.sh o3 o4-mini
-
-# No args = default to o3 + o4-mini.
-bash scripts/run_autogen_implicit.sh
-
-# Override knobs (env vars):
-MAX_PARALLEL=2   bash scripts/run_autogen_implicit.sh o3   # gentler on Anthropic rate limits
-EMIT_BOTH=1      bash scripts/run_autogen_implicit.sh o3   # also re-emit Table 2 explicit
-USE_FULL_JURY=1  bash scripts/run_autogen_implicit.sh o3   # use 4-category llm_jury_autogen.py instead
-
-# Re-runs are safe — completed configs are skipped on the second pass.
-# Default output: tables_filled_<backbone>_implicit.tex (just the Table 11 block).
+USE_FULL_JURY=1 bash scripts/run_autogen_implicit.sh o3
+EMIT_BOTH=1 USE_FULL_JURY=1 bash scripts/run_autogen_implicit.sh o3   # paper-ready both tables
 ```
 
-**Auto-borrow of weights from existing 4-category runs.** If a previous
-`llm_jury_autogen.py` run already wrote
-`results_autogen_<backbone>/<domain>/jury_results_fixed.json`, the runner
-copies it aside as `jury_results_fixed_4cat.json` (so the explicit numbers
-are not lost) and passes it to the implicit eval via `--weights-from`. The
-implicit numbers therefore use the same reliability weights as the
-existing explicit run, instead of falling back to uniform 1/3.
-
-The driver does three things per backbone:
-1. Scores every (AutoGen, shopping domain) pair, writing
-   `results_autogen_<backbone>/<domain>/jury_results_fixed.json`. The CI/BI
-   totals in `totals.jury` are exactly what populates the Table 11 AutoGen
-   columns.
-2. Aggregates AutoGen + Browser-Use into `tables_filled_<backbone>.tex`.
-3. Renders just the Implicit Oversharing LaTeX block into
-   `tables_filled_<backbone>_implicit.tex` (one `\begin{table}` block —
-   paste it into the paper, or copy out only the AutoGen rows to splice
-   into the existing Table 11). Set `EMIT_BOTH=1` to also re-emit the
-   Explicit table for sanity-checking against the paper's existing AutoGen
-   explicit numbers.
-
-If a collaborator wants the equivalent unrolled loop (for a one-domain
-sanity check or to mix with custom backbones):
-
-```bash
-DOMAINS=(shopping_Amazon_chat shopping_Amazon_email shopping_Amazon_generic \
-         shopping_ebay_chat   shopping_ebay_email   shopping_ebay_generic)
-for backbone in o3 o4-mini; do
-  for d in "${DOMAINS[@]}"; do
-    python scripts/llm_jury_autogen.py --domain "$d" --backbone "$backbone"
-  done
-  python scripts/aggregate_to_tables.py --backbone "$backbone"
-  python scripts/generate_jury_tables.py "tables_filled_${backbone}.tex" \
-      --backbone "$backbone" \
-      --output "../oversharing-neurips/tables/jury_${backbone}.tex"
-done
-```
+Use this if you also want refreshed AutoGen *explicit* numbers (Table 2 /
+Table 9), or if you want the implicit weighted-average to use reliability
+weights derived from explicit-majority agreement instead of uniform 1/3.
+Same per-call API cost as path (2) — the difference is which prompt the
+judges see and which categories appear in the output JSON.
 
 #### Smoke-test before committing to the full run
 
@@ -359,24 +337,24 @@ python scripts/generate_jury_tables.py tables_filled_o4-mini.tex \
 If the AutoGen-generic line shows real CI/BI counts (not `---`), the
 full `bash scripts/run_autogen_implicit.sh` is safe to launch.
 
-Why this works for AutoGen now: the `explicit_mention()` reclassification check
-in `llm_jury_autogen.py` is scoped to the **agent utterance prefix** of each
-step blob (everything before the first DOM marker), not the rendered eBay /
-Amazon page text that AutoGen's `MultimodalWebSurfer` includes after the
-agent's action sentence. Without that scope, eBay filter labels like
-"Stainless Steel" or "Smart" would substring-match a persona's irrelevant
-attributes and flip every CI flag to CE — which is why earlier AutoGen
-implicit results came out as zeros and were left out of Table 11. With the
-fix, the same three-judge weighted-average aggregation that produces the
-Browser-Use implicit numbers also produces the AutoGen ones.
+**Background — why the fix was needed.** The original AutoGen implicit
+column came out empty in the collaborator's first jury run because the
+post-hoc `explicit_mention()` reclassifier was matching DOM strings (eBay /
+Amazon filter labels in the rendered page) instead of the agent's own
+utterance, flipping every CI flag to CE. The fix scopes that check to the
+agent-utterance prefix of each step blob — everything before the first
+`"The web browser is open …"` / `"The viewport shows …"` / `"The following
+text is visible in the viewport …"` marker — so eBay filter labels like
+"Stainless Steel" or "Smart" no longer substring-match the persona's
+irrelevant attributes. Same fix applies in `implicit_eval_autogen.py`'s
+drop filter.
 
-The Table 11 column layout the paper uses (`Implicit Content Occ. | Rate |
-Implicit Behavioral Occ. | Rate`) corresponds directly to the
-`(CI_occ, CI_rate, BI_occ, BI_rate)` quadruple in
+**Reading numbers straight out of JSON.** If you only need the raw
+numbers (e.g. for a rebuttal table) without rebuilding the LaTeX, the
+Table 11 column layout (`Implicit Content Occ. | Rate | Implicit
+Behavioral Occ. | Rate`) maps directly to the `(CI, BI)` totals in
 `results_autogen_<backbone>/<domain>/jury_results_fixed.json` →
-`totals.jury`. If you only need the raw numbers (e.g. for a rebuttal
-without rebuilding the LaTeX), you can read them straight out of those
-JSON files; the rate is `occ / sum(persona["steps"] for persona in personas)`.
+`totals.jury`. Rate = `occ / sum(persona["steps"] for persona in personas)`.
 
 ## Already-completed cells
 
