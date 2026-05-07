@@ -196,17 +196,27 @@ the original collaborator run because the CI→CE reclassifier in
 `llm_jury_autogen.py` was matching DOM strings (eBay/Amazon filter labels
 in the rendered page) instead of just the agent's utterance, flipping every
 implicit flag to explicit and zeroing out the AutoGen implicit column. That's
-fixed now (see "Reclassification fix" above). To fill the missing AutoGen
-implicit rows, a collaborator with the trajectories shipped in this folder
-just runs the dedicated driver:
+fixed now (see "Reclassification fix" above).
+
+**Why there is no "implicit-only" shortcut:** the 3-judge jury scores all
+four categories (CE/CI/BE/BI) in a single LLM call per (step, judge), and
+the implicit weighted-average uses each judge's reliability weight, which
+is itself derived from agreement on the explicit-category majority across
+all steps. So even though you only need the implicit AutoGen rows, you have
+to re-run the same jury. What the dedicated driver below does is scope the
+work as tightly as possible: only AutoGen (no Browser-Use), only configs
+that don't already have output, and only the implicit table in the final
+LaTeX.
 
 ```bash
 # Fills both o3 and o4-mini in one shot. Re-runs are safe (skips done configs).
+# Default output: tables_filled_<backbone>_implicit.tex (just the Table 11 block).
 bash scripts/run_autogen_implicit.sh
 
 # Override knobs:
-BACKBONES="o3"     bash scripts/run_autogen_implicit.sh   # one backbone only
-MAX_PARALLEL=2     bash scripts/run_autogen_implicit.sh   # gentler on Anthropic rate limits
+BACKBONES="o3"  bash scripts/run_autogen_implicit.sh   # one backbone only
+MAX_PARALLEL=2  bash scripts/run_autogen_implicit.sh   # gentler on Anthropic rate limits
+EMIT_BOTH=1     bash scripts/run_autogen_implicit.sh   # also re-emit Table 2 explicit
 ```
 
 The driver does three things per backbone:
@@ -215,7 +225,12 @@ The driver does three things per backbone:
    totals in `totals.jury` are exactly what populates the Table 11 AutoGen
    columns.
 2. Aggregates AutoGen + Browser-Use into `tables_filled_<backbone>.tex`.
-3. Renders the paper-ready LaTeX into `tables_filled_<backbone>_paper.tex`.
+3. Renders just the Implicit Oversharing LaTeX block into
+   `tables_filled_<backbone>_implicit.tex` (one `\begin{table}` block —
+   paste it into the paper, or copy out only the AutoGen rows to splice
+   into the existing Table 11). Set `EMIT_BOTH=1` to also re-emit the
+   Explicit table for sanity-checking against the paper's existing AutoGen
+   explicit numbers.
 
 If a collaborator wants the equivalent unrolled loop (for a one-domain
 sanity check or to mix with custom backbones):
@@ -243,7 +258,8 @@ Before a collaborator burns ~$30 of Anthropic credit on the full
 ```bash
 python scripts/llm_jury_autogen.py --domain shopping_ebay_generic --backbone o4-mini
 python scripts/aggregate_to_tables.py --backbone o4-mini
-python scripts/generate_jury_tables.py tables_filled_o4-mini.tex --backbone o4-mini \
+python scripts/generate_jury_tables.py tables_filled_o4-mini.tex \
+    --backbone o4-mini --only implicit \
     | grep -A2 'AutoGen.*generic'   # implicit AutoGen row should now show non-`---` numbers
 ```
 

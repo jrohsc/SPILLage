@@ -280,17 +280,31 @@ def main():
     parser.add_argument("input", help="Path to the auto-generated .tex cell file")
     parser.add_argument("--backbone", "-b", required=True, help="Backbone model name (e.g., o3, gpt-4o)")
     parser.add_argument("--output", "-o", help="Output .tex file (default: stdout)")
+    parser.add_argument(
+        "--only",
+        choices=["explicit", "implicit", "both"],
+        default="both",
+        help=(
+            "Restrict output to one table. Use 'implicit' to emit only the "
+            "Table 3 / Table 11 LaTeX block (paper appendix C.3 AutoGen-row "
+            "fill-in). Default: both."
+        ),
+    )
     args = parser.parse_args()
 
     table2, table3 = parse_cells(args.input)
 
-    explicit = generate_explicit_table(table2, args.backbone)
-    implicit = generate_implicit_table(table2, table3, args.backbone)
-
-    output = f"% === Explicit Oversharing Table ({args.backbone}) ===\n"
-    output += explicit
-    output += f"\n\n% === Implicit Oversharing Table ({args.backbone}) ===\n"
-    output += implicit
+    output = ""
+    if args.only in ("explicit", "both"):
+        explicit = generate_explicit_table(table2, args.backbone)
+        output += f"% === Explicit Oversharing Table ({args.backbone}) ===\n"
+        output += explicit
+    if args.only in ("implicit", "both"):
+        implicit = generate_implicit_table(table2, table3, args.backbone)
+        if output:
+            output += "\n\n"
+        output += f"% === Implicit Oversharing Table ({args.backbone}) ===\n"
+        output += implicit
 
     if args.output:
         with open(args.output, "w") as f:
