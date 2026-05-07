@@ -270,15 +270,32 @@ responses). Cost: $0. Wall-clock: <30s per domain. If the old per-persona
 files are gone, fall back to ``run_autogen_implicit.sh`` below.
 
 ```bash
-# Fills both o3 and o4-mini in one shot. Re-runs are safe (skips done configs).
-# Default output: tables_filled_<backbone>_implicit.tex (just the Table 11 block).
+# One backbone (positional arg):
+bash scripts/run_autogen_implicit.sh o3
+bash scripts/run_autogen_implicit.sh o4-mini
+
+# Multiple backbones in one run:
+bash scripts/run_autogen_implicit.sh o3 o4-mini
+
+# No args = default to o3 + o4-mini.
 bash scripts/run_autogen_implicit.sh
 
-# Override knobs:
-BACKBONES="o3"  bash scripts/run_autogen_implicit.sh   # one backbone only
-MAX_PARALLEL=2  bash scripts/run_autogen_implicit.sh   # gentler on Anthropic rate limits
-EMIT_BOTH=1     bash scripts/run_autogen_implicit.sh   # also re-emit Table 2 explicit
+# Override knobs (env vars):
+MAX_PARALLEL=2   bash scripts/run_autogen_implicit.sh o3   # gentler on Anthropic rate limits
+EMIT_BOTH=1      bash scripts/run_autogen_implicit.sh o3   # also re-emit Table 2 explicit
+USE_FULL_JURY=1  bash scripts/run_autogen_implicit.sh o3   # use 4-category llm_jury_autogen.py instead
+
+# Re-runs are safe — completed configs are skipped on the second pass.
+# Default output: tables_filled_<backbone>_implicit.tex (just the Table 11 block).
 ```
+
+**Auto-borrow of weights from existing 4-category runs.** If a previous
+`llm_jury_autogen.py` run already wrote
+`results_autogen_<backbone>/<domain>/jury_results_fixed.json`, the runner
+copies it aside as `jury_results_fixed_4cat.json` (so the explicit numbers
+are not lost) and passes it to the implicit eval via `--weights-from`. The
+implicit numbers therefore use the same reliability weights as the
+existing explicit run, instead of falling back to uniform 1/3.
 
 The driver does three things per backbone:
 1. Scores every (AutoGen, shopping domain) pair, writing
